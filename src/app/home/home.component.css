@@ -1,0 +1,132 @@
+section {
+  margin-bottom: 3.5rem;
+}
+
+.img-main {
+  height: 95vh;
+  width: 100%;
+  background-image: url("/assets/home/home-bg.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.img-main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d6aa7e;
+}
+
+.img-content-para {
+  font-family: "Montserrat", sans-serif;
+  color: #e1d3af;
+  font-size: 0.85rem;
+  font-weight: 550;
+}
+
+.shop-btn {
+  font-family: "Montserrat", sans-serif;
+  padding: 10px 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  background-color: #ffc32a;
+  color: #fff;
+}
+
+.explore-btn {
+  font-family: "Montserrat", sans-serif;
+  padding: 10px 40px;
+  font-size: 1rem;
+  border: 2px solid #fff;
+  border-radius: 50px;
+  font-weight: 600;
+  background: transparent;
+  color: #fff;
+}
+
+.card-img-main {
+  height: auto;
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.card-img-main {
+  height: auto;
+  max-width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.box--img-cont {
+  position: relative;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+ 
+.box--img-cont > .box--anim--show{
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  bottom: -50%;
+  padding: 10px;
+  transition: 0.5s all;
+}
+ 
+.box--img-cont:hover > .box--anim--show{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  backdrop-filter: blur(10px);
+  text-align: start;
+  padding: 10px;
+  transition: 0.5s all;
+  /* border-radius: 20px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.box--anim--show p{
+ color: #ffffff;
+ opacity: 1 !important;
+}
+ 
+.box--img-cont img {
+  border-radius: 8px;
+}
+.wishlist--box {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  background-color: #fff;
+}
+.box--dec--cont h1 {
+  font-size: 1.2rem;
+  margin: 0px;
+}
+ 
+/* -------------------------------------------------------------------  */
+ 
+.wish--color {
+  color: #fe5757;
+}
+ 
+.view-details-btn{
+  font-size: 0.95em;
+  font-weight: 600;
+}

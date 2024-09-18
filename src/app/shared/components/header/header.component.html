@@ -1,0 +1,174 @@
+<header>
+    <div id="main">
+        <div class="nav">
+            <div class="container">
+                <div class="d-flex justify-content-between p-2">
+                    <h1 role="button" [routerLink]="['/home']">Amanda Furnitures</h1>
+                    <div class="d-flex">
+                        <ul class="d-flex gap-5 list-unstyled m-auto">
+                            <!-- <li role="button" class="fw-bolder nav-list" *ngFor="let nav of navbar">{{nav}}</li> -->
+                            <div class="search-main">
+                                <input type="search" class="search--bar">
+                                <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                            </div>
+                        </ul>
+                        <div class="d-flex gap-4 m-auto ms-5 icon--nav">
+                            <a [routerLink]="['/login']"><i class="fa-solid fa-user fa-lg"></i></a>
+                            <a [routerLink]=""><i class="fa-solid fa-heart fa-lg"></i></a>
+                            <a [routerLink]=""><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="mini--nav">
+    <div class="container position-relative">
+        <div class="d-flex justify-content-between">
+            <div class="d-flex">
+                <ul class="d-flex list-unstyled m-auto mini--nav--list gap-5">
+                    <li role="button" class="fw-bolder nav-list m-auto"
+                        *ngFor="let nav of miniNav">
+                        <button (mouseleave)="mouseLeave()" *ngIf="nav=='Sofas'" (mouseenter)="changeHoverState(nav)">
+                            {{nav}}
+                            <div class="hide--list--show" *ngIf="SofasHoverTimer === nav">
+                                <div class="navbar--hover--list" [@hoverState]="HoverShow">
+                                    <div class="row">
+                                        <div class="col-2" *ngFor="let items of sofas | slice:0:6">
+                                            <ul>
+                                                <li *ngFor="let item of items | slice:0:10">{{item}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          </button>
+
+                          <button (mouseleave)="mouseLeave()" *ngIf="nav=='Living'" (mouseenter)="changeHoverState(nav)">
+                            {{nav}}
+                            <div class="hide--list--show" *ngIf="LivingHoverTimer === nav">
+                                <div class="navbar--hover--list" [@hoverState]="HoverShow">
+                                    <div class="row">
+                                        <div class="col-2" *ngFor="let items of living | slice:0:6">
+                                            <ul>
+                                                <li *ngFor="let item of items | slice:0:10">{{item}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button (mouseleave)="mouseLeave()" *ngIf="nav=='Bedroom'" (mouseenter)="changeHoverState(nav)">
+                            {{nav}}
+                            <div class="hide--list--show" *ngIf="BedroomHoverTimer === nav">
+                                <div class="navbar--hover--list" [@hoverState]="HoverShow">
+                                    <div class="row">
+                                        <div class="col-2" *ngFor="let items of bedroom | slice:0:6">
+                                            <ul>
+                                                <li *ngFor="let item of items | slice:0:10">{{item}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button (mouseleave)="mouseLeave()" *ngIf="nav=='D&K'" (mouseenter)="changeHoverState(nav)">
+                            {{nav}}
+                            <div class="hide--list--show" *ngIf="DinningKitchenHoverTimer === nav">
+                                <div class="navbar--hover--list" [@hoverState]="HoverShow">
+                                    <div class="row">
+                                        <div class="col-2" *ngFor="let items of dinningKitchen | slice:0:6">
+                                            <ul>
+                                                <li *ngFor="let item of items | slice:0:10">{{item}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button (mouseleave)="mouseLeave()" *ngIf="nav=='Storage'" (mouseenter)="changeHoverState(nav)">
+                            {{nav}}
+                            <div class="hide--list--show" *ngIf="StorageHoverTimer === nav">
+                                <div class="navbar--hover--list" [@hoverState]="HoverShow">
+                                    <div class="row">
+                                        <div class="col-2" *ngFor="let items of storage | slice:0:6">
+                                            <ul>
+                                                <li *ngFor="let item of items | slice:0:10">{{item}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button (mouseleave)="mouseLeave()" *ngIf="nav=='Study & Office'" (mouseenter)="changeHoverState(nav)">
+                            {{nav}}
+                            <div class="hide--list--show" *ngIf="StudyOfficeHoverTimer === nav">
+                                <div class="navbar--hover--list" [@hoverState]="HoverShow">
+                                    <div class="row">
+                                        <div class="col-2" *ngFor="let items of studyOffice | slice:0:6">
+                                            <ul>
+                                                <li *ngFor="let item of items | slice:0:10">{{item}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button (mouseleave)="mouseLeave()" *ngIf="nav=='Lamps & Lightings'" (mouseenter)="changeHoverState(nav)">
+                            {{nav}}
+                            <div class="hide--list--show" *ngIf="LampsLightingsHoverTimer === nav">
+                                <div class="navbar--hover--list" [@hoverState]="HoverShow">
+                                    <div class="row">
+                                        <div class="col-2" *ngFor="let items of lampsLightings | slice:0:6">
+                                            <ul>
+                                                <li *ngFor="let item of items | slice:0:10">{{item}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button (mouseleave)="mouseLeave()" *ngIf="nav=='Furnishings'" (mouseenter)="changeHoverState(nav)">
+                            {{nav}}
+                            <div class="hide--list--show" *ngIf="FurnishingsHoverTimer === nav">
+                                <div class="navbar--hover--list" [@hoverState]="HoverShow">
+                                    <div class="row">
+                                        <div class="col-2" *ngFor="let items of furnishings | slice:0:6">
+                                            <ul>
+                                                <li *ngFor="let item of items | slice:0:10">{{item}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+
+                        <button (mouseleave)="mouseLeave()" *ngIf="nav=='Outdoor'" (mouseenter)="changeHoverState(nav)">
+                            {{nav}}
+                            <div class="hide--list--show" *ngIf="OutdoorHoverTimer === nav">
+                                <div class="navbar--hover--list" [@hoverState]="HoverShow">
+                                    <div class="row">
+                                        <div class="col-2" *ngFor="let items of outdoor | slice:0:6">
+                                            <ul>
+                                                <li *ngFor="let item of items | slice:0:10">{{item}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,118 @@
+
+<app-header></app-header>
+
+<section>
+    <owl-carousel-o [options]="customOptions">
+      <ng-template carouselSlide><img class="" src="assets/home/10.jpg" alt=""></ng-template>  
+      <ng-template carouselSlide><img class="" src="assets/home/11.jpg" alt=""></ng-template>  
+      <ng-template carouselSlide><img class="" src="assets/home/12.jpg" alt=""></ng-template>  
+      <ng-template carouselSlide><img class="" src="assets/home/13.jpg" alt=""></ng-template>  
+      <ng-template carouselSlide><img class="" src="assets/home/14.jpg" alt=""></ng-template>  
+    </owl-carousel-o>
+</section>
+
+<div id="">
+    <section>
+        <div class="container-fluid m-0 p-0">
+            <div class="img-main img-main-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5">
+                            <h1>Modern Interior <br> Design Studio</h1>
+                            <p class="mt-4 img-content-para">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+   
+                            <div class="mt-4 d-flex gap-4">
+                                <button class="shop-btn">Shop Now</button>
+                                <button class="explore-btn">Explore</button>
+                            </div>
+                        </div>
+       
+                        <div class="col-7">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <section>
+        <div id="cards">
+            <div class="container">
+                <div class="row">
+                    <div class="col-4 m-0 p-0">
+                        <div>
+                            <img class="card-img-main" src="assets/home/1.jpg" alt="">
+                        </div>
+   
+                        <div>
+                            <img class="card-img-main" src="assets/home/5.jpg" alt="">
+                        </div>
+   
+                        <div>
+                            <img class="card-img-main" src="assets/home/8.jpg" alt="">
+                        </div>
+                    </div>
+       
+       
+                    <div class="col-4 m-0 p-0">
+                        <div>
+                            <img class="card-img-main" src="assets/home/2.jpg" alt="">
+                        </div>
+   
+                        <div>
+                            <img class="card-img-main" src="assets/home/6.jpg" alt="">
+                        </div>
+   
+                        <div>
+                            <img class="card-img-main" src="assets/home/9.jpg" alt="">
+                        </div>
+                    </div>
+       
+       
+                    <div class="col-4 m-0 p-0">
+                        <div>
+                            <img class="card-img-main" src="assets/home/3.jpg" alt="">
+                        </div>
+   
+                        <div>
+                            <img class="card-img-main" src="assets/home/4.jpg" alt="">
+                        </div>
+   
+                        <div>
+                            <img class="card-img-main" src="assets/home/7.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 mb-5" *ngFor="let item of sofaList">
+                    <div class="box--img-cont">
+                        <div class="box--anim--show">
+                            <div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam assumenda minus quo magnam, officiis cupiditate eaque itaque architecto impedit reiciendis?</p>
+                                <button class="botton view-details-btn" (click)="showDetailsItem(item)">View</button>
+                            </div>
+                        </div>
+                        <img class="img-fluid" [src]="item.image" alt="">
+                        <div class="wishlist--box" (click)="addWishlist(item)">
+                            <span><i [class]="item.showHeartIcon ? 'fa-solid fa-heart fa-xl wish--color' : 'fa-regular fa-heart fa-xl'"></i></span>
+                        </div>
+                    </div>
+                    <div class="box--dec--cont">
+                        <h1><strong>{{item.name}}</strong></h1>
+                        <span>{{item.description}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+ 
+
+

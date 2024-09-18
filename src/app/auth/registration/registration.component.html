@@ -1,0 +1,38 @@
+
+
+<section>
+    <div id="main">
+        <div class="login--sec">
+            <div class="row m-0 h-100">
+                <div class="col-6 h-100 m-0 p-0">
+                    <div class="login--inputs2 ">
+                        <img class="img-fluid" src="assets/login-registration-img/3.jpg" alt="">
+                        <div class="inner--login-sec">
+                            <h1>User Registration !</h1>
+                            <div class="">
+                                <input type="email" placeholder="Please enter email" [(ngModel)]="loginRegistrationModel.email">
+                            </div>
+                            <div class="">
+                                <input type="password" placeholder="Please enter password" [(ngModel)]="loginRegistrationModel.password">
+                            </div>
+                            <div class="position-relative">
+                                <input type="password" placeholder="Please confirm password" [type]="showPassword ? 'text' : 'password'" [(ngModel)]="loginRegistrationModel.confirmpassword">
+                                    <div class="show--pass--icon" (click)="showPass()">
+                                        <span><i [class]="showPassword ? 'fa fa-eye passImg' : 'fa fa-eye-slash passImg'"></i></span>
+                                    </div>
+                            </div>
+                            <button class="botton login-btn" (click)="registeration()">Register</button>
+                            <h3>Already have an account?<span [routerLink]="['/login']">Login</span></h3>
+                        </div>
+                    </div>
+                </div>
+ 
+                <div class="col-6 h-100 m-0 p-0">
+                    <div class="login--inputs1">
+                        <img class="img-fluid" src="assets/login-registration-img/2.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
