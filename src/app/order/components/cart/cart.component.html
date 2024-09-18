@@ -1,0 +1,47 @@
+
+
+<div id="main">
+        <div class="container">
+            <section class="cart--details--wrap">
+
+            <div class="row">
+                <div class="col-7">
+                    <div class="row">
+                        <div class="col-3">
+                            <h6>Product</h6>
+                            <img class="img-fluid" src="assets/single-product-img/1.jpg" alt="">
+                            <strong>Sofa</strong>
+                            <p>#465456dsf5455</p>
+                            <p>Size: 3 Seats</p>
+                            <p>Color: Gold</p>
+                        </div>
+                        <div class="col-3">
+                            <h6>Price</h6>
+                            <p style="margin-top: 100px; text-align: center;">$ 20000</p>
+                        </div>
+                        <div class="col-3">
+                            <h6>Qty</h6>
+                            <div class="cart-sec-main" style="margin-top: 100px;">
+                                <div class="cart--main">
+                                    <div class="decrees--btn" (click)="decreesCart()"><i class="fa-solid fa-minus"></i></div>
+                                    <input class="price--input" maxlength="4" type="text" value="0" [(ngModel)]="addValue">
+                                    <div class="increase--btn" (click)="increaseCart()"><i class="fa-solid fa-plus"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <h6>Total</h6>
+                            <div class="final--amount"  style="margin-top: 100px; text-align: center;"><i class="fa-solid fa-dollar-sign me-1"></i>{{validationService.numberWithCommas(addValue * singleProductDetails.price)}}</div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-5">
+                    
+                </div>
+            </div>
+        </section>
+
+        </div>
+</div>
+
