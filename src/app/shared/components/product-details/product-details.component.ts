@@ -5,11 +5,12 @@ import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ValidationService } from '../services/validation-service/validation.service';
+import { RouterModule } from '@angular/router';
 declare var bootstrap: any;
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CarouselModule, HeaderComponent, NgFor, CommonModule, FormsModule],
+  imports: [CarouselModule, HeaderComponent, NgFor, CommonModule, FormsModule, RouterModule],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
   // animations: [trigger('hoverState', [

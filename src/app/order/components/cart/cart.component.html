@@ -4,38 +4,61 @@
             <div class="row">
                 <div class="col-8">
                     <div class="row">
-                        <div class="row g-0">
-                            <div class="col-3 cart--head">Product</div>
-                            <div class="col-3 cart--head">Price</div>
-                            <div class="col-3 cart--head">Qty</div>
-                            <div class="col-3 cart--head">Total</div>
+                        <div class="row">
+                            <div class="col-3">
+                               <h1 class="cart--head">
+                                   Product
+                               </h1>
+                            </div>
+                            <div class="col-3">
+                                <h1 class="cart--head">
+                                    Price
+                                </h1>
+                            </div>
+                            <div class="col-3">
+                                <h1 class="cart--head">
+                                    Qty
+                                </h1>
+                            </div>
+                            <div class="col-3">
+                                <h1 class="cart--head">
+                                    Total
+                                </h1>
+                            </div>
                         </div>
-                        <div class="row g-0">
-                            <div class="col-3 cart--img--blok">
-                                <img class="img-fluid" src="assets/single-product-img/1.jpg" alt="">
-                                <p class="final--amount">Sofa</p>
-                                <p>#465456dsf5455</p>
-                                <p>Size: 3 Seats</p>
-                                <p>Color: Gold</p>
-                            </div>
-                            <div class="col-3 price--qty--total--box">
-                                <p class="final--amount">$ 20000</p>
-                            </div>
-                            <div class="col-3 price--qty--total--box qty--box">
-                                <div class="cart-sec-main">
-                                    <div class="cart--main">
-                                        <div class="decrees--btn" (click)="decreesCart()"><i
-                                                class="fa-solid fa-minus"></i></div>
-                                        <input class="price--input" maxlength="4" type="text" value="0"
-                                            [(ngModel)]="addValue">
-                                        <div class="increase--btn" (click)="increaseCart()"><i
-                                                class="fa-solid fa-plus"></i></div>
-                                    </div>
+                        <div class="scrollbar">
+                            <div class="box--by--seprete">
+                                <div type="button" class="modal--img--view--btn">
+                                    <i class="fa-solid fa-circle-xmark fa-2xl"></i>
                                 </div>
-                            </div>
-                            <div class="col-3 price--qty--total--box">
-                                <div class="final--amount"><i
-                                        class="fa-solid fa-dollar-sign me-1"></i>{{validationService.numberWithCommas(addValue*singleProductDetails.price)}}</div>
+                                <div class="row">
+                                    <div class="col-3 cart--img--blok">
+                                        <img class="img-fluid" src="assets/single-product-img/1.jpg" alt="">
+                                        <p class="final--amount prod--name">Sofa</p>
+                                        <p>#465456dsf5455</p>
+                                        <p>Size: 3 Seats</p>
+                                        <p>Color: Gold</p>
+                                    </div>
+                                    <div class="col-3 price--qty--total--box">
+                                        <p class="final--amount">$ 20000</p>
+                                    </div>
+                                    <div class="col-3 price--qty--total--box qty--box">
+                                        <div class="cart-sec-main">
+                                            <div class="cart--main">
+                                                <div class="decrees--btn" (click)="decreesCart()"><i
+                                                        class="fa-solid fa-minus"></i></div>
+                                                <input class="price--input" maxlength="4" type="text" value="0"
+                                                    [(ngModel)]="addValue">
+                                                <div class="increase--btn" (click)="increaseCart()"><i
+                                                        class="fa-solid fa-plus"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3 price--qty--total--box">
+                                        <div class="final--amount"><i
+                                            class="fa-solid fa-dollar-sign me-1"></i>{{validationService.numberWithCommas(addValue*singleProductDetails.price)}}</div>
+                                    </div>
+                                </div>    
                             </div>
                         </div>
                     </div>
@@ -46,7 +69,7 @@
                         <div class="col-12">
                             <div class="col-12 cart--head">Details</div>
                             <div class="details--box">
-                                <p class="mb-2">Cart Total: <span>
+                                <p class="mb-2" style="font-size: 1.2rem;">Cart Total: <span>
                                     <i class="fa-solid fa-dollar-sign"></i>
                                     {{validationService.numberWithCommas(addValue*singleProductDetails.price)}}
                                 </span>
@@ -54,11 +77,11 @@
                                 <p class="shiping-txt">Shipping & taxes calculated at checkout</p>
  
                                 <div class="agree--term-con--box">
-                                    <input class="form-check-input checkbox--box" type="checkbox" value="" aria-label="Checkbox for following text input">
-                                    <label class="shiping-txt" for="">I agree to <span>terms & conditions</span></label>
+                                    <input class="form-check-input checkbox--box" type="checkbox" id="agree-tearms" value="agree-tearms" aria-label="Checkbox for following text input">
+                                    <label class="shiping-txt" for="agree-tearms">I agree to <span>terms & conditions</span></label>
                                 </div>
 
-                                <button class="botton mt-5">Checkout <i class="fa-solid fa-bag-shopping ms-2"></i></button>
+                                <button class="botton mt-4" [routerLink]="['/checkout']">Checkout <i class="fa-solid fa-bag-shopping ms-2"></i></button>
 
                                 <img class="img-fluid" src="assets/cart/cart-right-bg.png" alt="">
                             </div>
@@ -70,3 +93,5 @@
  
     </div>
 </div>
+
+

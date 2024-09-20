@@ -1,18 +1,18 @@
 #main {
   min-height: 100vh;
   width: 100%;
-  /* background-color: #683e22; */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("https://plus.unsplash.com/premium_photo-1672883551967-ab11316526b4?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
+  /* background-image: url("https://plus.unsplash.com/premium_photo-1672883551967-ab11316526b4?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"); */
+  background-image: url("https://plus.unsplash.com/premium_photo-1672883551968-dd15ceb7f802?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .cart--details--wrap {
   height: 90vh;
   width: 100%;
-  padding: 35px 45px;
+  padding: 30px 30px;
   box-shadow: 0 0 1.25rem rgb(0 0 0 / 15%);
   border-radius: 12px;
   backdrop-filter: blur(5px);
@@ -64,17 +64,18 @@ h6 {
   height: 100%;
 }
 .decrees--btn:hover {
-  color: #fff;
+  color: #8c6348;
   cursor: pointer;
 }
 .increase--btn:hover {
-  color: #fff;
+  color: #8c6348;
   cursor: pointer;
 }
 .cart--img--blok {
   text-align: center;
 }
 .cart--img--blok p {
+  font-size: 0.85rem;
   text-align: start;
 }
 .cart--img--blok strong {
@@ -84,7 +85,7 @@ h6 {
   text-align: center;
   font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .price--qty--total--box {
   text-align: center;
@@ -103,7 +104,7 @@ h6 {
   border-radius: 8px;
 }
 .details--box {
-  padding: 30px;
+  padding: 20px 25px;
   border: 2px solid #8c6348;
   border-radius: 8px;
 }
@@ -115,14 +116,15 @@ h6 {
   margin-left: 5px;
 }
 .details--box .shiping-txt {
-  font-size: 0.9rem;
-  font-weight: 400;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
 }
 .agree--term-con--box {
   display: flex;
   justify-content: start;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 7px;
 }
 .checkbox--box {
   margin: auto 0px;
@@ -134,7 +136,7 @@ h6 {
 }
 .shiping-txt span {
   font-family: "Parisienne", cursive;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 600;
 }
 .details--box button {
@@ -143,4 +145,23 @@ h6 {
   background-color: #683e22;
   padding: 8px 20px;
   font-size: 0.95rem;
+}
+.details--box img {
+  margin-top: 5px;
+}
+.prod--name {
+  font-size: 1.2rem !important;
+}
+.scrollbar {
+  overflow-y: scroll;
+  height: 430px;
+  scrollbar-width: thin;
+}
+.box--by--seprete {
+  position: relative;
+  padding: 20px 25px;
+  box-shadow: 0 0 1.25rem rgb(0 0 0 / 15%);
+  border-radius: 8px;
+  margin: 20px 0px;
+  margin-right: 8px;
 }

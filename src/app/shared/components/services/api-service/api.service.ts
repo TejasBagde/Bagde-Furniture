@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SingleProduct } from '../../../../models/sofa-list-interface/sofaListInterface';
+import { HttpClient } from '@angular/common/http';
+import { GenericResponse, PincodeResponse } from '../../../../order/models/order-interface/interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class ApiService {
     {id: 6, name: 'Sofa6', description: 'this is test for json6', image: 'assets/sofas/6.webp', showHeartIcon: false, price: 20000, material: 'leather', discount: 30},
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   fetchHomeItemsData(){
     let promise = new Promise((res: any, rej: any)=>{
@@ -26,5 +28,11 @@ export class ApiService {
     return promise
   }
 
+  getCountry(){
+    return this.http.get<GenericResponse>('https://countriesnow.space/api/v0.1/countries/capital');
+  }
 
+  pincodeForm(pin: string){
+    return this.http.get<PincodeResponse>(`https://api.postalpincode.in/pincode/${pin}`);
+  }
 }

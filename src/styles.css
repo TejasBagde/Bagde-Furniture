@@ -71,10 +71,10 @@ input:focus {
 }
 
 .botton {
-  padding: 10px 60px;
+  padding: 8px 25px;
   background-color: #fff;
   border-radius: 4px;
-  border: 2px solid #fff;
+  border: 2px solid #000;
   font-weight: 500;
 }
 
@@ -96,7 +96,8 @@ input:focus {
   right: -15px;
   border-radius: 50%;
   background-color: #fff;
-  color: orange;
+  /* color: orange; */
+  color: #bb6023;
   z-index: 999;
 }
 
@@ -106,4 +107,8 @@ select,
 textarea {
   outline: none !important;
   box-shadow: none !important;
+}
+
+a {
+  text-decoration: none;
 }
