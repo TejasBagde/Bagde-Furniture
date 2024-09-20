@@ -1,5 +1,5 @@
 export class DeliveryFormResponse {
-  country: any[] = [];
+  name: string = '';
   firstname: string = '';
   lastname: string = '';
   Pincode: string = '';
@@ -8,6 +8,8 @@ export class DeliveryFormResponse {
   Name: string = '';
   Phone: string = '';
   Address: string = '';
+  email: string = '';
+  date: string = '';
 }
 
 export class postofficeResponse {

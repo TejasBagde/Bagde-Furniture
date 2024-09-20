@@ -22,11 +22,26 @@ export class CheckoutComponent {
   postofficeResponse: postofficeResponse = new postofficeResponse();
   showPin: any;
   addressList: any[] =[];
+  shippingListData: any[] = [];
 
   constructor(private apiService: ApiService, private toster: ToastrService, private router: Router){}
 
   ngOnInit(): void {
     this.getCountry();
+  }
+
+  clearAllData(){
+    this.DeliveryFormResponse.name = '';
+    this.postofficeResponse.Name = '';
+    this.DeliveryFormResponse.firstname = '';
+    this.DeliveryFormResponse.lastname = '';
+    this.postofficeResponse.Pincode = '';
+    this.postofficeResponse.State = '';
+    this.postofficeResponse.District = '';
+    this.DeliveryFormResponse.Phone = '';
+    this.DeliveryFormResponse.Address = '';
+    this.DeliveryFormResponse.email = '';
+    this.DeliveryFormResponse.date = '';
   }
 
   getCountry(){
@@ -62,6 +77,26 @@ export class CheckoutComponent {
         this.router.navigate(['/not-found']);
       },
     })
+  }
+
+  submit(){
+    const shippingModel: DeliveryFormResponse | postofficeResponse = {
+      name: this.DeliveryFormResponse.name,
+      Name: this.postofficeResponse.Name,
+      firstname: this.DeliveryFormResponse.firstname,
+      lastname: this.DeliveryFormResponse.lastname,
+      Pincode: this.postofficeResponse.Pincode,
+      State: this.postofficeResponse.State,
+      District: this.postofficeResponse.District,
+      Phone: this.DeliveryFormResponse.Phone,
+      Address: this.DeliveryFormResponse.Address,
+      email: this.DeliveryFormResponse.email,
+      date: this.DeliveryFormResponse.date,
+    }
+    this.shippingListData.push(shippingModel);
+    console.log("shippingList", this.shippingListData);
+
+    this.clearAllData();
   }
 
 

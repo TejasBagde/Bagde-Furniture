@@ -64,7 +64,7 @@ input {
   margin-bottom: 5px;
 }
 .contact--box h1 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: 1.3rem;
   font-weight: 600;
 }
@@ -91,4 +91,18 @@ select:focus {
 .sumit--btn button {
   background: #000;
   color: #fff;
+}
+p {
+  margin: 0px;
+  padding: 0px;
+}
+.total--amount {
+  padding: 15px;
+}
+.total--amount-box {
+  display: flex;
+  justify-content: space-between;
+}
+hr {
+  margin-top: 25px;
 }
