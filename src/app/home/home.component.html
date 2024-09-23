@@ -103,6 +103,10 @@
                         <div class="wishlist--box" (click)="addWishlist(item)">
                             <span><i [class]="item.showHeartIcon ? 'fa-solid fa-heart fa-xl wish--color' : 'fa-regular fa-heart fa-xl'"></i></span>
                         </div>
+
+                        <div class="discount--box">
+                            <p>{{item.discount}}% <span>Discount</span></p>
+                        </div>
                     </div>
                     <div class="box--dec--cont">
                         <h1><strong>{{item.name}}</strong></h1>
