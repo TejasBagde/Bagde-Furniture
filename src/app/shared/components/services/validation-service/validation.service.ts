@@ -29,4 +29,18 @@ export class ValidationService {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  mobileNumberRegex(mobile: any){
+    var mobileReg = /^[789]\d{9}$/;
+    return mobileReg.test(mobile);
+  }
+
+  onlyNumberAllowed(e: any){
+    var x = e.which || e.keycode;
+    if(x >= 48 && x <= 57){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
 }

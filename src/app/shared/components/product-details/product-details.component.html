@@ -26,7 +26,7 @@
                       <h5>{{singleProductDetails.name}}</h5>
                       <p>{{singleProductDetails.description}}</p>
                       <div class="row">
-                          <div class="col-6 border--right">
+                          <div class="col-7 border--right">
                               <div class="d-flex">
                                   <div class="me-3">
                                       <i class="fa-regular fa-star fa-xl"></i>
@@ -39,7 +39,7 @@
                               </div>
                           </div>
 
-                          <div class="col-6 ps-5" (click)="addToWishlist()">
+                          <div class="col-5 ps-5" (click)="addToWishlist()">
                               <div class="d-flex">
                                   <div class="me-2 heart-color"><i class="fa-xl" [class]="addWishList ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"></i></div>
                                   <div class="add--to--wishlist">Add To Wishlist</div>
@@ -62,7 +62,7 @@
 
                       <div>
                           <button class="botton add-cart-btn" [routerLink]="['/cart']" routerLinkActive="router-link-active">Add to Cart</button>
-                          <button class="botton by-btn">Buy Now</button>
+                          <button class="botton by-btn" [routerLink]="['/checkout']">Buy Now</button>
                       </div>
                   </section>
 

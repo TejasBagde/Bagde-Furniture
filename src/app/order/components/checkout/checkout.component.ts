@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ValidationService } from '../../../shared/components/services/validation-service/validation.service';
 
 @Component({
   selector: 'app-checkout',
@@ -24,7 +25,7 @@ export class CheckoutComponent {
   addressList: any[] =[];
   shippingListData: any[] = [];
 
-  constructor(private apiService: ApiService, private toster: ToastrService, private router: Router){}
+  constructor(private apiService: ApiService, private toster: ToastrService, private router: Router, public validationService: ValidationService){}
 
   ngOnInit(): void {
     this.getCountry();
@@ -59,6 +60,7 @@ export class CheckoutComponent {
     })
   }
 
+  
   pincodeForm(pin: postofficeResponse["Pincode"]){
     this.apiService.pincodeForm(pin).subscribe({
       next: (res: any)=>{
@@ -79,24 +81,49 @@ export class CheckoutComponent {
     })
   }
 
-  submit(){
-    const shippingModel: DeliveryFormResponse | postofficeResponse = {
-      name: this.DeliveryFormResponse.name,
-      Name: this.postofficeResponse.Name,
-      firstname: this.DeliveryFormResponse.firstname,
-      lastname: this.DeliveryFormResponse.lastname,
-      Pincode: this.postofficeResponse.Pincode,
-      State: this.postofficeResponse.State,
-      District: this.postofficeResponse.District,
-      Phone: this.DeliveryFormResponse.Phone,
-      Address: this.DeliveryFormResponse.Address,
-      email: this.DeliveryFormResponse.email,
-      date: this.DeliveryFormResponse.date,
-    }
-    this.shippingListData.push(shippingModel);
-    console.log("shippingList", this.shippingListData);
 
-    this.clearAllData();
+  submit(){
+    if(this.validationService.isEmptyNullUndefine(this.DeliveryFormResponse.name)){
+      this.toster.error("Please select country");
+    }else if(this.validationService.isEmptyNullUndefine(this.DeliveryFormResponse.firstname)){
+      this.toster.error("Name filled should not be empty");
+    }else if(this.validationService.isEmptyNullUndefine(this.DeliveryFormResponse.lastname)){
+      this.toster.error("Lastname filled should not be empty");
+    }else if(!this.validationService.emailRegex2(this.DeliveryFormResponse.email)){
+      this.toster.error("Please enter correct email");
+    }else if(this.validationService.isEmptyNullUndefine(this.DeliveryFormResponse.date)){
+      this.toster.error("Date filled should not be empty");
+    }else if(this.validationService.isEmptyNullUndefine(this.postofficeResponse.Pincode)){
+      this.toster.error("Pincode filled should not be empty");
+    }else if(this.validationService.isEmptyNullUndefine(this.postofficeResponse.State)){
+      this.toster.error("State filled should not be empty");
+    }else if(this.validationService.isEmptyNullUndefine(this.postofficeResponse.District)){
+      this.toster.error("City filled should not be empty");
+    }else if(this.validationService.isEmptyNullUndefine(this.postofficeResponse.Name)){
+      this.toster.error("Post Address filled should not be empty");
+    }else if(!this.validationService.mobileNumberRegex(this.DeliveryFormResponse.Phone)){
+      this.toster.error("Phone filled should not be empty");
+    }else if(this.validationService.isEmptyNullUndefine(this.DeliveryFormResponse.Address)){
+      this.toster.error("Delivery Address filled should not be empty");
+    }
+    else {
+      const shippingModel: DeliveryFormResponse | postofficeResponse = {
+        firstname: this.DeliveryFormResponse.firstname,
+        lastname: this.DeliveryFormResponse.lastname,
+        Pincode: this.postofficeResponse.Pincode,
+        State: this.postofficeResponse.State,
+        District: this.postofficeResponse.District,
+        Phone: this.DeliveryFormResponse.Phone,
+        Address: this.DeliveryFormResponse.Address,
+        email: this.DeliveryFormResponse.email,
+        date: this.DeliveryFormResponse.date,
+        name: this.DeliveryFormResponse.name,
+        Name: this.postofficeResponse.Name,
+      }
+      this.toster.success("Form filled Successfully");
+      this.shippingListData.push(shippingModel);
+      this.clearAllData();
+    }
   }
 
 
