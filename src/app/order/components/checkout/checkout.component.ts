@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DeliveryFormResponse, postofficeResponse } from '../../models/order-classes/order-class';
-import { GenericResponse, PincodeResponse } from '../../models/order-interface/interface';
+import { GenericResponse } from '../../models/order-interface/interface';
 import { ApiService } from '../../../shared/components/services/api-service/api.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ValidationService } from '../../../shared/components/services/validation-service/validation.service';
+import { debounceTime, distinctUntilChanged, Subject, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -25,10 +26,39 @@ export class CheckoutComponent {
   addressList: any[] =[];
   shippingListData: any[] = [];
 
+  searchSubject = new Subject<string>();
+
   constructor(private apiService: ApiService, private toster: ToastrService, private router: Router, public validationService: ValidationService){}
 
   ngOnInit(): void {
     this.getCountry();
+    this.searchPincode();
+  }
+
+  pincodeForm(pin: postofficeResponse["Pincode"]){
+    this.searchSubject.next(pin);
+  }
+
+  searchPincode(){
+    this.searchSubject.pipe(debounceTime(0),
+    distinctUntilChanged(),
+    switchMap((pincode)=> this.apiService.pincodeForm(pincode))).subscribe({
+      next: (res: any)=>{
+        if (res[0].Status == 'Success') {
+          this.toster.success(res[0].Status);
+          const postList: any = res;
+          for (let item of postList) {
+            this.addressList = item.PostOffice;
+            this.postofficeResponse = item.PostOffice[0];
+          }
+        } else {
+          this.toster.error(res[0].Message);
+        }
+      }, error: (err)=> {
+        this.toster.error("An unexpected error has occurred, contact with administrator");
+        this.router.navigate(['/not-found']);
+      },
+    })
   }
 
   clearAllData(){
@@ -61,25 +91,25 @@ export class CheckoutComponent {
   }
 
   
-  pincodeForm(pin: postofficeResponse["Pincode"]){
-    this.apiService.pincodeForm(pin).subscribe({
-      next: (res: any)=>{
-        if(res[0].Status == 'Success'){
-          this.toster.success(res[0].Status);
-          const postList:any = res;
-          for(let item of postList){
-            this.addressList = item.PostOffice;
-            this.postofficeResponse = item.PostOffice[0];
-          }
-        }else{
-          this.toster.error(res[0].Message);
-        }
-      }, error: (err)=> {
-        this.toster.error("An unexpected error has occurred, contact with administrator");
-        this.router.navigate(['/not-found']);
-      },
-    })
-  }
+  // pincodeForm(pin: postofficeResponse["Pincode"]){
+  //   this.apiService.pincodeForm(pin).subscribe({
+  //     next: (res: any)=>{
+  //       if(res[0].Status == 'Success'){
+  //         this.toster.success(res[0].Status);
+  //         const postList:any = res;
+  //         for(let item of postList){
+  //           this.addressList = item.PostOffice;
+  //           this.postofficeResponse = item.PostOffice[0];
+  //         }
+  //       }else{
+  //         this.toster.error(res[0].Message);
+  //       }
+  //     }, error: (err)=> {
+  //       this.toster.error("An unexpected error has occurred, contact with administrator");
+  //       this.router.navigate(['/not-found']);
+  //     },
+  //   })
+  // }
 
 
   submit(){
@@ -102,7 +132,7 @@ export class CheckoutComponent {
     }else if(this.validationService.isEmptyNullUndefine(this.postofficeResponse.Name)){
       this.toster.error("Post Address filled should not be empty");
     }else if(!this.validationService.mobileNumberRegex(this.DeliveryFormResponse.Phone)){
-      this.toster.error("Phone filled should not be empty");
+      this.toster.error("Entred number is not valid");
     }else if(this.validationService.isEmptyNullUndefine(this.DeliveryFormResponse.Address)){
       this.toster.error("Delivery Address filled should not be empty");
     }

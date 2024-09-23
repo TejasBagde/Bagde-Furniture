@@ -60,6 +60,14 @@
                           <div class="final--amount"><i class="fa-solid fa-dollar-sign me-2"></i>{{validationService.numberWithCommas(addValue * singleProductDetails.price)}}</div>
                       </div>
 
+                      
+                      <!-- <div class="add--amount">
+                        <button (click)="decreesCart()"><i class="fa-solid fa-minus"></i></button>
+                        <input type="Search" maxlength="4" value="0" [(ngModel)]="addValue">
+                        <button (click)="increaseCart()"><i class="fa-solid fa-plus"></i></button>
+                        <div class="final--amount ms-5 m-auto"><i class="fa-solid fa-dollar-sign me-1"></i>{{validationService.numberWithCommas(addValue * singleProductDetails.price)}}</div>
+                      </div> -->
+
                       <div>
                           <button class="botton add-cart-btn" [routerLink]="['/cart']" routerLinkActive="router-link-active">Add to Cart</button>
                           <button class="botton by-btn" [routerLink]="['/checkout']">Buy Now</button>
