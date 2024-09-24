@@ -44,6 +44,7 @@ export class LoginComponent {
         );
         if (user) {
           this.toasterService.success('Welcome Home');
+          localStorage.setItem("loginUser", JSON.stringify(user));
           this.router.navigate(['/home']);
         } else {
           this.toasterService.error('Invalid Credentials');
@@ -54,7 +55,6 @@ export class LoginComponent {
     }
   }
   
-
   showPass() {
     this.showPassword = !this.showPassword;
   }

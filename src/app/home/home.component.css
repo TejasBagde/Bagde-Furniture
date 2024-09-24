@@ -133,8 +133,8 @@ section {
 
 .discount--box {
   position: absolute;
-  top: 90px;
-  right: 0px;
+  top: 25px;
+  left: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,4 +151,42 @@ section {
   margin: auto;
   font-size: 0.8rem;
   font-weight: 500;
+}
+
+.title-header {
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin: 50px 0px;
+  font-family: "Parisienne", cursive;
+}
+
+.card-box {
+  padding: 20px;
+}
+.mini-card {
+  margin: 10px 5px;
+  box-shadow: 0 0 1.25rem rgb(0 0 0 / 45%);
+  border-radius: 20px;
+}
+
+/* .mini-card:hover {
+  margin: 10px 5px;
+  box-shadow: 0 0 1.25rem rgb(0 0 0 / 45%);
+  border-radius: 20px;
+  cursor: pointer;
+} */
+
+.mini-card .mini-text {
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+p {
+  margin: 0px;
+}
+
+.card-box-caro {
+  padding: 0px;
+  margin: 30px 0px;
 }

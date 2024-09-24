@@ -24,7 +24,6 @@ import { debounceTime, Subject, switchMap, timer } from 'rxjs';
 })
 export class HeaderComponent {
 
-
   navbar: any[] = ["Shop", "About", "Services", "Blog", "Contact Us"];
  
   miniNav: any[] = ['Sofas', 'Living', 'Bedroom', 'D&K', 'Storage', 'Study & Office', 'Lamps & Lightings', 'Furnishings', 'Outdoor'];
@@ -110,7 +109,15 @@ export class HeaderComponent {
 
   HoverShow: any = 'default';
 
+  loginUser: any;
   ngOnInit(): void {
+    // const user: any = localStorage.getItem("loginUser");
+    // const userEmail = (JSON.parse(user));
+    // const trimUser = userEmail?.email;
+    // this.loginUser = trimUser.replace(/@.*/, '');
+
+    this.loginUser = (JSON.parse(localStorage.getItem("loginUser") || '{}')?.email || '').split('@')[0];
+
     this.hoverSubject
       .pipe(
         debounceTime(this.hoverTimeout),

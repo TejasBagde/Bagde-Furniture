@@ -7,6 +7,7 @@ import { ProductDetailsComponent } from './shared/components/product-details/pro
 import { CartComponent } from './order/components/cart/cart.component';
 import { CheckoutComponent } from './order/components/checkout/checkout.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { WishlistComponent } from './order/components/wishlist/wishlist.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -17,5 +18,7 @@ export const routes: Routes = [
   { path: 'product-details', component: ProductDetailsComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'not-found', component: NotFoundComponent },
+  { path: 'wishlist', component: WishlistComponent },
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' },
+  // { path: 'not-found', component: NotFoundComponent },
 ];

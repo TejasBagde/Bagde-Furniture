@@ -88,10 +88,12 @@
         </div>
     </section>
 
+    <h1 class="title-header">Sofas</h1>
+
     <section>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4 mb-5" *ngFor="let item of sofaList">
+                <div class="col-4" *ngFor="let item of sofaList">
                     <div class="box--img-cont">
                         <div class="box--anim--show">
                             <div>
@@ -111,12 +113,95 @@
                     <div class="box--dec--cont">
                         <h1><strong>{{item.name}}</strong></h1>
                         <span>{{item.description}}</span>
+                        <p>${{item.price}}</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <section>
+        <img class="img-fluid" src="assets/home/mid-sec/1.webp" alt="">
+    </section>
+
+    <h1 class="title-header">Beds</h1>
+
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4 mb-5" *ngFor="let item of bedList">
+                    <div class="box--img-cont">
+                        <div class="box--anim--show">
+                            <div>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam assumenda minus quo magnam, officiis cupiditate eaque itaque architecto impedit reiciendis?</p>
+                                <button class="botton view-details-btn" (click)="showDetailsItem(item)">View</button>
+                            </div>
+                        </div>
+                        <img class="img-fluid" [src]="item.image" alt="">
+                        <div class="wishlist--box" (click)="addWishlist(item)">
+                            <span><i [class]="item.showHeartIcon ? 'fa-solid fa-heart fa-xl wish--color' : 'fa-regular fa-heart fa-xl'"></i></span>
+                        </div>
+    
+                        <div class="discount--box">
+                            <p>{{item.discount}}% <span>Discount</span></p>
+                        </div>
+                    </div>
+                    <div class="box--dec--cont">
+                        <h1><strong>{{item.name}}</strong></h1>
+                        <span>{{item.description}}</span>
+                        <p>${{item.price}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+            <img class="img-fluid" src="assets/home/mid-sec/2.webp" alt="">
+    </section>
+
+    <section>
+        <div class="container-fluid">
+            <div class="card-box">
+                <owl-carousel-o [options]="customOptions1">
+                    <ng-template carouselSlide *ngFor="let item of miniHomeBoxList">
+                        <div class="mini-card">
+                            <img class="img-fluid" src="{{item.image}}" alt="">
+                            <div class="mini-text">
+                                <p>{{item.name}}</p>
+                                <p>{{item.description}}</p>
+                                <p>$ 200</p>
+                            </div>
+                        </div>
+                    </ng-template>  
+                  </owl-carousel-o>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <img class="img-fluid" src="assets/home/mid-sec/2.webp" alt="">
+   </section>
+
+   <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-3" *ngFor="let item of miniHomeBoxList">
+                <div class="card-box-caro">
+                    <div class="mini-card">
+                        <img class="img-fluid" src="{{item.image}}" alt="">
+                        <div class="mini-text">
+                            <p>{{item.name}}</p>
+                            <p>{{item.description}}</p>
+                            <p>$ 200</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 </div>
  
-
 

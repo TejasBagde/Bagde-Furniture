@@ -50,7 +50,9 @@ ul {
   border-radius: 12px;
   background-color: #fff;
   max-height: 450px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .navbar--hover--list .row .col-2 ul li {
   font-size: 0.85rem;
@@ -120,11 +122,18 @@ button:hover {
 input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
-
 .fa-magnifying-glass {
   position: absolute;
   right: 10px;
   top: 20px;
   cursor: pointer;
   color: #a35931;
+}
+.user--name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e1d3af;
+  margin-left: 7px;
+  text-transform: capitalize;
+  letter-spacing: 1px;
 }

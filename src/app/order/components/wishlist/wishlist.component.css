@@ -1,0 +1,47 @@
+#main {
+  height: 100vh;
+  width: 100%;
+  /* background-color: red; */
+  background-image: url("https://wallpapers.com/images/high/beautiful-tan-modern-furniture-1p8lqahjzvgac2vw.webp");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card--main {
+  height: 90%;
+  width: 90%;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #fff;
+}
+th {
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+td {
+  padding-top: 32px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+th > .prod--name > img {
+  height: 70px;
+  width: 70px;
+}
+th > .prod--name > p {
+  margin: auto 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.prod--name {
+  display: flex;
+}
+.wish-btn-add {
+  border: 2px solid #683e22;
+  background-color: #683e22;
+  color: #fff;
+  padding: 6px 20px;
+  font-size: 0.8rem;
+}
