@@ -73,9 +73,7 @@ export class HomeComponent implements OnInit{
   sofaList: any = [];
   bedList: any = [];
   miniHomeBoxList: any = [];
-
   singleDetailsList: SingleProduct[] = [];
-
   userIdentify: any;
 
   constructor(private apiService: ApiService, private router: Router, private toster: ToastrService){}
@@ -87,7 +85,9 @@ export class HomeComponent implements OnInit{
 
     const userIdentify: any = localStorage.getItem("loginUser");
     this.userIdentify = (JSON.parse(userIdentify));
-  }
+    // localStorage.setItem('wishlistList', JSON.stringify(this.bedList));
+    // localStorage.setItem("wishlistList", JSON.stringify(this.wishlistArray));
+  }     
 
   async fetchHomeItemsData() {
     try{
@@ -141,7 +141,7 @@ export class HomeComponent implements OnInit{
           itemList.showHeartIcon = true;
         }
       }
-      localStorage.setItem("wishlistList", JSON.stringify(this.wishlistArray))
+      localStorage.setItem("wishlistList", JSON.stringify(this.wishlistArray));
     }else{
       this.toster.error("Please login first");
     }

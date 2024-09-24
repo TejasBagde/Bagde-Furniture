@@ -11,6 +11,9 @@ import { Component, OnInit } from '@angular/core';
 export class WishlistComponent implements OnInit{
 
   wishlistList: any[] = [];
+  userMail: any;
+  userLogin: any;
+
   constructor(){}
 
   ngOnInit(): void {
@@ -18,7 +21,9 @@ export class WishlistComponent implements OnInit{
   }
 
   removeItem(id: any){
-    this.wishlistList = this.wishlistList.filter((x: any)=>id !== x.id);
+    this.wishlistList = this.wishlistList.filter((x: any) => id !== x.id);
+    localStorage.removeItem('wishlistList');
+    localStorage.setItem('wishlistList', JSON.stringify(this.wishlistList));
   }
 
 }
