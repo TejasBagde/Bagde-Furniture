@@ -1,5 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { OrderServiceService } from '../../services/order-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wishlist',
@@ -11,10 +13,8 @@ import { Component, OnInit } from '@angular/core';
 export class WishlistComponent implements OnInit{
 
   wishlistList: any[] = [];
-  userMail: any;
-  userLogin: any;
 
-  constructor(){}
+  constructor(private orderService: OrderServiceService, private router: Router){}
 
   ngOnInit(): void {
     this.wishlistList = JSON.parse(localStorage.getItem("wishlistList") || '{}');
@@ -24,6 +24,11 @@ export class WishlistComponent implements OnInit{
     this.wishlistList = this.wishlistList.filter((x: any) => id !== x.id);
     localStorage.removeItem('wishlistList');
     localStorage.setItem('wishlistList', JSON.stringify(this.wishlistList));
+  }
+
+  addToCartData(items: any){
+    this.orderService.subjectSendData(items);
+    this.router.navigate(['/cart']);
   }
 
 }

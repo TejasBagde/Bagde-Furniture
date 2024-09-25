@@ -17,7 +17,6 @@ export class RegistrationComponent {
 
   loginRegistrationModel: loginRegistrationModel = new loginRegistrationModel();
   usersArrayList: any[] = [];
- 
   showPassword: boolean = false;
 
   constructor(private validationService: ValidationService, private toaster: ToastrService, private router: Router){}

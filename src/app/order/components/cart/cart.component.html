@@ -31,16 +31,16 @@
                                 <div type="button" class="modal--img--view--btn">
                                     <i class="fa-solid fa-circle-xmark fa-2xl"></i>
                                 </div>
-                                <div class="row">
+                                <div class="row" *ngFor="let item of wishlistArrayStore">
                                     <div class="col-3 cart--img--blok">
-                                        <img class="img-fluid" src="assets/single-product-img/1.jpg" alt="">
-                                        <p class="final--amount prod--name">Sofa</p>
-                                        <p>#465456dsf5455</p>
-                                        <p>Size: 3 Seats</p>
-                                        <p>Color: Gold</p>
+                                        <img class="img-fluid" src="{{item.image}}" alt="">
+                                        <p class="final--amount prod--name">{{item.name}}</p>
+                                        <p>{{item.id}}</p>
+                                        <!-- <p>Size: 3 Seats</p>
+                                        <p>Color: Gold</p> -->
                                     </div>
                                     <div class="col-3 price--qty--total--box">
-                                        <p class="final--amount">$ 20000</p>
+                                        <p class="final--amount">$ {{item.price}}</p>
                                     </div>
                                     <div class="col-3 price--qty--total--box qty--box">
                                         <div class="cart-sec-main">
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="col-3 price--qty--total--box">
                                         <div class="final--amount"><i
-                                            class="fa-solid fa-dollar-sign me-1"></i>{{validationService.numberWithCommas(addValue*singleProductDetails.price)}}</div>
+                                            class="fa-solid fa-dollar-sign me-1"></i>{{validationService.numberWithCommas(addValue*item.price)}}</div>
                                     </div>
                                 </div>    
                             </div>
