@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { OrderServiceService } from '../../services/order-service.service';
 import { Router } from '@angular/router';
@@ -6,14 +6,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-wishlist',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NgIf],
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css'
 })
 export class WishlistComponent implements OnInit{
 
   wishlistList: any[] = [];
-
+  
   constructor(private orderService: OrderServiceService, private router: Router){}
 
   ngOnInit(): void {
@@ -27,6 +27,7 @@ export class WishlistComponent implements OnInit{
   }
 
   addToCartData(items: any){
+    items.quantity = 1
     this.orderService.subjectSendData(items);
     this.router.navigate(['/cart']);
   }

@@ -27,11 +27,11 @@
                             </div>
                         </div>
                         <div class="scrollbar">
-                            <div class="box--by--seprete">
-                                <div type="button" class="modal--img--view--btn">
+                            <div class="box--by--seprete" *ngFor="let item of wishlistArrayStore">
+                                <div type="button" class="modal--img--view--btn" (click)="removeCart(item.id)">
                                     <i class="fa-solid fa-circle-xmark fa-2xl"></i>
                                 </div>
-                                <div class="row" *ngFor="let item of wishlistArrayStore">
+                                <div class="row">
                                     <div class="col-3 cart--img--blok">
                                         <img class="img-fluid" src="{{item.image}}" alt="">
                                         <p class="final--amount prod--name">{{item.name}}</p>
@@ -42,23 +42,32 @@
                                     <div class="col-3 price--qty--total--box">
                                         <p class="final--amount">$ {{item.price}}</p>
                                     </div>
-                                    <div class="col-3 price--qty--total--box qty--box">
+                                    <!-- <div class="col-3 price--qty--total--box qty--box">
                                         <div class="cart-sec-main">
                                             <div class="cart--main">
-                                                <div class="decrees--btn" (click)="decreesCart()"><i
+                                                <div class="decrees--btn" (click)="decreesCart(item.id)"><i
                                                         class="fa-solid fa-minus"></i></div>
                                                 <input class="price--input" maxlength="4" type="text" value="0"
                                                     [(ngModel)]="addValue">
-                                                <div class="increase--btn" (click)="increaseCart()"><i
+                                                <div class="increase--btn" (click)="increaseCart(item.id)"><i
                                                         class="fa-solid fa-plus"></i></div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
+                                    <div class="col-3 price--qty--total--box qty--box">
+                                        <div class="cart-sec-main">
+                                          <div class="cart--main">
+                                            <div class="decrees--btn" (click)="decreesCart(item.id)"><i class="fa-solid fa-minus"></i></div>
+                                            <input class="price--input" maxlength="4" type="text" [(ngModel)]="item.quantity" />
+                                            <div class="increase--btn" (click)="increaseCart(item.id)"><i class="fa-solid fa-plus"></i></div>
+                                          </div>
+                                        </div>
+                                      </div>
                                     <div class="col-3 price--qty--total--box">
                                         <div class="final--amount"><i
-                                            class="fa-solid fa-dollar-sign me-1"></i>{{validationService.numberWithCommas(addValue*item.price)}}</div>
+                                            class="fa-solid fa-dollar-sign me-1"></i>{{validationService.numberWithCommas(item.quantity*item.price)}}</div>
                                     </div>
-                                </div>    
+                                </div> 
                             </div>
                         </div>
                     </div>

@@ -18,3 +18,16 @@ export class postofficeResponse {
   District: string = '';
   Name: string = '';
 }
+
+export class singleProductModel {
+  description: string = '';
+  discount: number = 0;
+  id: number = 0;
+  image: string = '';
+  material: string = '';
+  name: string = '';
+  price: number = 0;
+  showHeartIcon: boolean = false;
+}
+
+

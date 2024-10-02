@@ -7,4 +7,5 @@ export type SingleProduct = {
   price: number;
   material: string;
   discount: number;
+  quantity: number;
 };
