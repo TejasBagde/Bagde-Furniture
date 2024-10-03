@@ -6,6 +6,7 @@ import { SingleProduct } from '../models/sofa-list-interface/sofaListInterface';
 import { ApiService } from '../shared/components/services/api-service/api.service';
 import { RouterModule, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { OrderServiceService } from '../order/services/order-service.service';
 
 @Component({
   selector: 'app-home',
@@ -76,7 +77,9 @@ export class HomeComponent implements OnInit{
   singleDetailsList: SingleProduct[] = [];
   userIdentify: any;
 
-  constructor(private apiService: ApiService, private router: Router, private toster: ToastrService){}
+  wishlistLength:any[] = [];
+
+  constructor(private apiService: ApiService, private router: Router, private toster: ToastrService, private orderservice: OrderServiceService){}
 
   ngOnInit(): void {
     this.fetchHomeItemsData();
@@ -85,15 +88,14 @@ export class HomeComponent implements OnInit{
 
     const userIdentify: any = localStorage.getItem("loginUser");
     this.userIdentify = (JSON.parse(userIdentify));
-    // localStorage.setItem('wishlistList', JSON.stringify(this.bedList));
-    // localStorage.setItem("wishlistList", JSON.stringify(this.wishlistArray));
+
+    this.wishlistArray = this.orderservice.homeWishlistData.getValue(); //get value of wishlist
   }     
 
   async fetchHomeItemsData() {
     try{
       const data = await this.apiService.fetchHomeItemsData();
       this.sofaList = data;
-      console.log(this.sofaList)
     }catch(error){
       console.log("error", error)
     }
@@ -103,7 +105,6 @@ export class HomeComponent implements OnInit{
     try{
       const data = await this.apiService.fetchHomeBedData();
       this.bedList = data;
-      console.log(this.bedList);
     }catch(error){
       console.log("error", error)
     }
@@ -113,7 +114,6 @@ export class HomeComponent implements OnInit{
     try{
       const data = await this.apiService.fetchHomeMiniBox();
       this.miniHomeBoxList = data;
-      console.log(this.miniHomeBoxList);
     }catch(error){
       console.log("error", error)
     }
@@ -141,7 +141,7 @@ export class HomeComponent implements OnInit{
           itemList.showHeartIcon = true;
         }
       }
-      localStorage.setItem("wishlistList", JSON.stringify(this.wishlistArray));
+      this.orderservice.homeWishlistDataSend(this.wishlistArray);
     }else{
       this.toster.error("Please login first");
     }

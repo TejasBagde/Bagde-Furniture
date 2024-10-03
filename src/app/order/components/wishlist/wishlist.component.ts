@@ -17,19 +17,24 @@ export class WishlistComponent implements OnInit{
   constructor(private orderService: OrderServiceService, private router: Router){}
 
   ngOnInit(): void {
-    this.wishlistList = JSON.parse(localStorage.getItem("wishlistList") || '{}');
+    this.wishlistList = this.orderService.homeWishlistData.getValue();
   }
 
   removeItem(id: any){
     this.wishlistList = this.wishlistList.filter((x: any) => id !== x.id);
-    localStorage.removeItem('wishlistList');
-    localStorage.setItem('wishlistList', JSON.stringify(this.wishlistList));
+    this.orderService.homeWishlistDataSend(this.wishlistList);
   }
 
-  addToCartData(items: any){
-    items.quantity = 1
-    this.orderService.subjectSendData(items);
-    this.router.navigate(['/cart']);
+  addToCartData(id: any){
+    this.wishlistList.forEach((x: any)=>{
+      if(x.id == id){
+      this.orderService.subjectSendData(x);
+      this.router.navigate(['/cart']);
+      }
+    })
+
+    // items.quantity = 1
+    // this.orderService.subjectSendData(items);
   }
 
 }

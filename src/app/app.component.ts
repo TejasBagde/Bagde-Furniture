@@ -16,16 +16,24 @@ export class AppComponent implements OnInit{
   constructor(private orderService: OrderServiceService){}
 
   ngOnInit(): void {
-    const storeData = localStorage.getItem("getWishlistData");
-    if(storeData){
-      this.orderService.wishlistOrderData.next(JSON.parse(storeData));
+    const homeData = JSON.parse(localStorage.getItem("getHomewishlistData") || '[]');
+    if(homeData){
+      this.orderService.homeWishlistData.next(homeData);
+    }
+
+    const wishlist = JSON.parse(localStorage.getItem("getWishlist") || '[]');
+    if(wishlist){
+      this.orderService.wishlistOrderData.next(wishlist);
     }
   }
 
   @HostListener('window:beforeunload', ['$event'])
   getWishlistData(){
-    const data = this.orderService.wishlistOrderData.getValue();
-    localStorage.setItem("getWishlistData", JSON.stringify(data));
+    const homeData = this.orderService.homeWishlistData.getValue();
+    localStorage.setItem("getHomewishlistData", JSON.stringify(homeData));
+
+    const wishlist = this.orderService.wishlistOrderData.getValue();
+    localStorage.setItem("getWishlist", JSON.stringify(wishlist));
   }
 
 }

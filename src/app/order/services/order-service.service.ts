@@ -7,11 +7,16 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class OrderServiceService {
 
   wishlistOrderData = new BehaviorSubject<[]>([]);
+  homeWishlistData = new BehaviorSubject<[]>([]);
 
   constructor() {}
 
   subjectSendData(wishlist: any){
     this.wishlistOrderData.next(wishlist);
+  }
+
+  homeWishlistDataSend(wishlist: any){
+    this.homeWishlistData.next(wishlist);
   }
 
 

@@ -1,6 +1,6 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { debounceTime, Subject, switchMap, timer } from 'rxjs';
@@ -110,11 +110,10 @@ export class HeaderComponent {
   HoverShow: any = 'default';
 
   loginUser: any;
+
+  @Input() wishlistArray: any[] = [];
+
   ngOnInit(): void {
-    // const user: any = localStorage.getItem("loginUser");
-    // const userEmail = (JSON.parse(user));
-    // const trimUser = userEmail?.email;
-    // this.loginUser = trimUser.replace(/@.*/, '');
 
     this.loginUser = (JSON.parse(localStorage.getItem("loginUser") || '{}')?.email || '').split('@')[0];
 

@@ -31,6 +31,18 @@ h1 {
   cursor: pointer;
 }
 
+.icon--nav a {
+  position: relative;
+}
+
+.icon--nav > a > .wish--len {
+  position: absolute;
+  bottom: 10px;
+  left: 21px;
+  color: #fff;
+  font-weight: 600;
+}
+
 li {
   list-style: none;
   margin-bottom: 8px;
