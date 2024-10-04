@@ -14,6 +14,8 @@ export class WishlistComponent implements OnInit{
 
   wishlistList: any[] = [];
   
+  storeWishlistData: any[]=[];
+
   constructor(private orderService: OrderServiceService, private router: Router){}
 
   ngOnInit(): void {
@@ -28,13 +30,18 @@ export class WishlistComponent implements OnInit{
   addToCartData(id: any){
     this.wishlistList.forEach((x: any)=>{
       if(x.id == id){
-      this.orderService.subjectSendData(x);
-      this.router.navigate(['/cart']);
+        x.quantity = 1;
+      this.storeWishlistData.push(x)
       }
     })
-
     // items.quantity = 1
     // this.orderService.subjectSendData(items);
+  }
+
+
+  goToCart(){
+    this.orderService.subjectSendData(this.storeWishlistData);
+    this.router.navigate(['/cart']);
   }
 
 }

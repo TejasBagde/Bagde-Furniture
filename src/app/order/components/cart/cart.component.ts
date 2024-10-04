@@ -20,20 +20,15 @@ export class CartComponent implements OnInit{
   wishlistArrayStore: any[] = [];
   identifyId: any;
 
+  totalCartAmount: number = 0
+
   constructor(public validationService: ValidationService, private orderService: OrderServiceService){}
 
   ngOnInit(): void {
-    
-    const wishlistData = this.orderService.wishlistOrderData.getValue();
-    const wishlistArrayStore = JSON.parse(localStorage.getItem("wishlistCartData") || '[]');
-
-    if (wishlistData) {
-        wishlistArrayStore.push(wishlistData);
-        localStorage.setItem("wishlistCartData", JSON.stringify(wishlistArrayStore));
-    }
-
-    this.wishlistArrayStore = wishlistArrayStore;
-    console.log("wishlistArrayStore", this.wishlistArrayStore);
+    this.wishlistArrayStore = this.orderService.wishlistOrderData.getValue();
+    this.totalCartAmount = this.wishlistArrayStore.reduce((x, y)=>{
+      return x + y.price
+    }, 0);
   }
 
   decreesCart(id: number) {
@@ -42,7 +37,6 @@ export class CartComponent implements OnInit{
         item.quantity--;  // Decrease the quantity of the specific item
       }
     });
-    this.updateWishlistLocalStorage(); // Update localStorage if needed
   }
   
   increaseCart(id: number) {
@@ -50,17 +44,13 @@ export class CartComponent implements OnInit{
       if (item.id === id && item.quantity < 999) {
         item.quantity++;  // Increase the quantity of the specific item
       }
+      this.orderService.subjectSendData(this.wishlistArrayStore);
     });
-    this.updateWishlistLocalStorage(); // Update localStorage if needed
-  }
-  
-  updateWishlistLocalStorage() {
-    localStorage.setItem("wishlistCartData", JSON.stringify(this.wishlistArrayStore)); // Update localStorage
   }
   
   removeCart(id: number){
     this.wishlistArrayStore = this.wishlistArrayStore.filter((x)=> id !== x.id);
-    this.updateWishlistLocalStorage(); // Update localStorage if needed
+    this.orderService.subjectSendData(this.wishlistArrayStore);
   }
 
 }
