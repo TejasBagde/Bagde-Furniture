@@ -46,9 +46,25 @@ th > .prod--name > p {
   font-size: 0.8rem;
 }
 
-.go--to--cart{
+.go--to--cart {
   margin: 20px;
-  background-color: #67993D;
-  border: 2px solid #67993D;
+  background-color: #67993d;
+  border: 2px solid #67993d;
   color: #fff;
+}
+
+.empty-img--wrapper {
+  height: 400px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.empty-img--wrapper .empty-img {
+  height: 100%;
+  width: 100%;
+}
+.empty-img--wrapper h1 {
+  color: #bea184;
 }

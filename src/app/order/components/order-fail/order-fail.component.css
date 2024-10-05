@@ -1,0 +1,35 @@
+#main {
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-weight: 500;
+  color: #EC5024;
+}
+
+.order-wrap div span {
+  font-size: 4rem;
+  color: #EC5024;
+}
+
+.order-wrap button {
+  margin: 50px 20px;
+  height: 45px;
+  width: 200px;
+}
+
+.order-wrap .btn1 {
+  border: 2px solid #EC5024;
+  background-color: #EC5024;
+  color: #fff;
+}
+.order-wrap .btn2 {
+  border: 2px solid #EC5024;
+  color: #EC5024;
+}

@@ -165,6 +165,7 @@ h6 {
   height: 430px;
   scrollbar-width: thin;
 }
+
 .box--by--seprete {
   position: relative;
   padding: 20px 25px;
@@ -176,4 +177,20 @@ h6 {
 .cart-sec-main {
   display: flex;
   justify-content: center;
+}
+
+.empty-img--wrapper {
+  height: 300px;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.empty-img--wrapper .empty-img {
+  height: 100%;
+  width: 100%;
+}
+.empty-img--wrapper h1 {
+  color: #bea184;
 }

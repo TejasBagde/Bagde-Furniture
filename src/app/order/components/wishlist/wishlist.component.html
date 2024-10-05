@@ -12,6 +12,7 @@
                     <th scope="col">Cart</th>
                 </tr>
             </thead>
+
             <tbody>
                 <tr *ngFor="let item of wishlistList"> 
                     <th scope="row">
@@ -20,7 +21,7 @@
                             <p>{{item.name}}</p>
                         </div>
                     </th>
-                    <td>{{item.price}}</td>
+                    <td>$ {{item.price}}</td>
                     <td>In Stock</td>
                     <td>
                         <button class="botton wish-btn-add" (click)="addToCartData(item.id)">Add to cart</button>
@@ -31,8 +32,13 @@
             </tbody>
         </table>
 
+        <div class="empty-img--wrapper" *ngIf="wishlistList.length===0">
+            <h1>Wishlist Is Empty</h1>
+            <img class="empty-img" src="assets/wishlist/2.gif" alt="">
+        </div>
+
         <div class="text-center">
-            <button class="botton go--to--cart" (click)="goToCart()">Go To Cart</button>
+            <button class="botton go--to--cart" (click)="goToCart()" *ngIf="wishlistList.length!==0">Go To Cart</button>
         </div>
 
     </div>

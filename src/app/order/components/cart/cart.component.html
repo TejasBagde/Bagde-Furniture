@@ -69,6 +69,11 @@
                                     </div>
                                 </div> 
                             </div>
+
+                            <div class="empty-img--wrapper" *ngIf="wishlistArrayStore.length===0">
+                                <img class="empty-img" src="assets/wishlist/2.gif" alt="">
+                                <h1>Cart Is Empty</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,7 +95,7 @@
                                     <label class="shiping-txt" for="agree-tearms">I agree to <span>terms & conditions</span></label>
                                 </div>
 
-                                <button class="botton mt-4" [routerLink]="['/checkout']">Checkout <i class="fa-solid fa-bag-shopping ms-2"></i></button>
+                                <button class="botton mt-4" (click)="goCheckout()">Checkout <i class="fa-solid fa-bag-shopping ms-2"></i></button>
 
                                 <img class="img-fluid" src="assets/cart/cart-right-bg.png" alt="">
                             </div>

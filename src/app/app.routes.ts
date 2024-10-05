@@ -8,6 +8,8 @@ import { CartComponent } from './order/components/cart/cart.component';
 import { CheckoutComponent } from './order/components/checkout/checkout.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { WishlistComponent } from './order/components/wishlist/wishlist.component';
+import { OrderSuccessComponent } from './order/components/order-success/order-success.component';
+import { OrderFailComponent } from './order/components/order-fail/order-fail.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -19,6 +21,8 @@ export const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'wishlist', component: WishlistComponent },
+  { path: 'order-success', component: OrderSuccessComponent },
+  { path: 'order-fail', component: OrderFailComponent },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
   // { path: 'not-found', component: NotFoundComponent },
 ];

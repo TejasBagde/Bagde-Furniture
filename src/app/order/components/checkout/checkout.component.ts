@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { ValidationService } from '../../../shared/components/services/validation-service/validation.service';
 import { debounceTime, distinctUntilChanged, Subject, switchMap } from 'rxjs';
+import { OrderServiceService } from '../../services/order-service.service';
 
 @Component({
   selector: 'app-checkout',
@@ -19,20 +20,32 @@ import { debounceTime, distinctUntilChanged, Subject, switchMap } from 'rxjs';
 })
 export class CheckoutComponent {
 
-  getCountryList: any[] = [];
+ 
   DeliveryFormResponse: DeliveryFormResponse = new DeliveryFormResponse();
   postofficeResponse: postofficeResponse = new postofficeResponse();
-  showPin: any;
+
   addressList: any[] =[];
+  getCountryList: any[] = [];
+
   shippingListData: any[] = [];
+  orderAddressData: any[] = [];
+
+  totalAmount: number = 0;
+
+  singleOrderConfirm: {} = {};
 
   searchSubject = new Subject<string>();
 
-  constructor(private apiService: ApiService, private toster: ToastrService, private router: Router, public validationService: ValidationService){}
+  constructor(private apiService: ApiService, private toster: ToastrService, private router: Router, public validationService: ValidationService, private orderService: OrderServiceService){}
 
   ngOnInit(): void {
     this.getCountry();
     this.searchPincode();
+
+    this.shippingListData = this.orderService.checkoutData.getValue();
+    this.totalAmount = this.shippingListData.reduce((x, y)=>{
+      return x + y.price;
+    }, 0)
   }
 
   pincodeForm(pin: postofficeResponse["Pincode"]){
@@ -90,28 +103,6 @@ export class CheckoutComponent {
     })
   }
 
-  
-  // pincodeForm(pin: postofficeResponse["Pincode"]){
-  //   this.apiService.pincodeForm(pin).subscribe({
-  //     next: (res: any)=>{
-  //       if(res[0].Status == 'Success'){
-  //         this.toster.success(res[0].Status);
-  //         const postList:any = res;
-  //         for(let item of postList){
-  //           this.addressList = item.PostOffice;
-  //           this.postofficeResponse = item.PostOffice[0];
-  //         }
-  //       }else{
-  //         this.toster.error(res[0].Message);
-  //       }
-  //     }, error: (err)=> {
-  //       this.toster.error("An unexpected error has occurred, contact with administrator");
-  //       this.router.navigate(['/not-found']);
-  //     },
-  //   })
-  // }
-
-
   submit(){
     if(this.validationService.isEmptyNullUndefine(this.DeliveryFormResponse.name)){
       this.toster.error("Please select country");
@@ -151,10 +142,21 @@ export class CheckoutComponent {
         Name: this.postofficeResponse.Name,
       }
       this.toster.success("Form filled Successfully");
-      this.shippingListData.push(shippingModel);
+      this.orderAddressData.push(shippingModel);
       this.clearAllData();
     }
   }
+
+  payment(){
+    this.singleOrderConfirm = {
+      orderAddress: this.orderAddressData,
+      orderData: this.shippingListData,
+      orderAmount: this.totalAmount,
+    }
+    localStorage.setItem("orderSuccess", JSON.stringify(this.singleOrderConfirm));
+    this.router.navigate(['/order-success']);
+  }
+
 
 
 }

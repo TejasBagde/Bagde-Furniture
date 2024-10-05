@@ -8,6 +8,7 @@ export class OrderServiceService {
 
   wishlistOrderData = new BehaviorSubject<[]>([]);
   homeWishlistData = new BehaviorSubject<[]>([]);
+  checkoutData = new BehaviorSubject<[]>([]);
 
   constructor() {}
 
@@ -19,5 +20,8 @@ export class OrderServiceService {
     this.homeWishlistData.next(wishlist);
   }
 
+  checkoutDataSend(checkout: any){
+    this.checkoutData.next(checkout);
+  }
 
 }
