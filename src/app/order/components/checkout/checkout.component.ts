@@ -44,7 +44,7 @@ export class CheckoutComponent {
 
     this.shippingListData = this.orderService.checkoutData.getValue();
     this.totalAmount = this.shippingListData.reduce((x, y)=>{
-      return x + y.price;
+      return x + (y.price * y.quantity);
     }, 0)
   }
 
@@ -148,13 +148,20 @@ export class CheckoutComponent {
   }
 
   payment(){
-    this.singleOrderConfirm = {
-      orderAddress: this.orderAddressData,
-      orderData: this.shippingListData,
-      orderAmount: this.totalAmount,
+    if(this.orderAddressData.length <= 0){
+      this.toster.error("Plese submit form first");
+    }else if(this.shippingListData.length <= 0){
+      this.toster.error("shipping item should not be empty");
     }
-    localStorage.setItem("orderSuccess", JSON.stringify(this.singleOrderConfirm));
-    this.router.navigate(['/order-success']);
+    else{
+      this.singleOrderConfirm = {
+        orderAddress: this.orderAddressData,
+        orderData: this.shippingListData,
+        orderAmount: this.totalAmount,
+      }
+      localStorage.setItem("orderSuccess", JSON.stringify(this.singleOrderConfirm));
+      this.router.navigate(['/order-success']);
+    }
   }
 
 
