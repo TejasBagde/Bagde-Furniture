@@ -22,8 +22,12 @@ export class CartComponent implements OnInit{
 
   ngOnInit(): void {
     this.wishlistArrayStore = this.orderService.wishlistOrderData.getValue();
+    this.getTotalAmount();
+  }
+
+  getTotalAmount(){
     this.totalCartAmount = this.wishlistArrayStore.reduce((x, y)=>{
-      return x + y.price
+      return x + (y.price*y.quantity);
     }, 0);
   }
 
@@ -31,6 +35,7 @@ export class CartComponent implements OnInit{
     this.wishlistArrayStore.forEach((item: any) => {
       if (item.id === id && item.quantity > 0) {
         item.quantity--;
+        this.getTotalAmount();
       }
     });
   }
@@ -39,6 +44,7 @@ export class CartComponent implements OnInit{
     this.wishlistArrayStore.forEach((item: any) => {
       if (item.id === id && item.quantity < 999) {
         item.quantity++;
+        this.getTotalAmount();
       }
     });
   }
