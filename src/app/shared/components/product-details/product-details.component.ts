@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from "../header/header.component";
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule, NgClass, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ValidationService } from '../services/validation-service/validation.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { OrderServiceService } from '../../../order/services/order-service.service';
 declare var bootstrap: any;
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [CarouselModule, HeaderComponent, NgFor, CommonModule, FormsModule, RouterModule],
+  imports: [CarouselModule, HeaderComponent, NgFor, CommonModule, FormsModule, RouterModule, NgClass],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css',
   // animations: [trigger('hoverState', [
@@ -75,14 +76,18 @@ export class ProductDetailsComponent {
   showModalImage: boolean = false;
   addWishList: boolean = false;
   addValue: number = 0;
+  singleDataList: any[]=[];
 
   HoverShow: any = 'default';
 
-  constructor(public validationService: ValidationService){}
+  constructor(public validationService: ValidationService, private orderService: OrderServiceService, private router: Router){}
  
   ngOnInit(): void {
-    const singleProductDetails = localStorage.getItem("singleProduct");
-    this.singleProductDetails = (JSON.parse(singleProductDetails || '{}'));
+    // const singleProductDetails = localStorage.getItem("singleProduct");
+    // this.singleProductDetails = (JSON.parse(singleProductDetails || '{}'));
+
+    this.singleProductDetails = this.orderService.singleProductData.getValue();
+    this.singleProductDetails.quantity = 1;
   }
 
   showModal(){
@@ -98,22 +103,27 @@ export class ProductDetailsComponent {
     this.customOptions = { ...this.customOptions, startPosition: index };
   }
 
-  addToWishlist(){
-    this.addWishList = !this.addWishList;
+  addToWishlist(items: any){
+    items.showHeartIcon = !items.showHeartIcon;
   }
 
-  decreesCart(){
-    if(this.addValue >= 1){
-      this.addValue --
+  increaseCart(item: any){
+    if (item.quantity <= 999) {
+      item.quantity++;
     }
   }
 
-  increaseCart(){
-    if(this.addValue <= 999){
-      this.addValue ++
+  decreesCart(item: any){
+    if(item.quantity >= 1){
+      item.quantity --;
     }
   }
 
+  addToCart(item: any){
+    this.singleDataList.push(item);
+    this.orderService.subjectSendData(this.singleDataList);
+    this.router.navigate(['/cart']);
+  }
 
 
 

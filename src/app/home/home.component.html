@@ -103,7 +103,7 @@
                         </div>
                         <img class="img-fluid" [src]="item.image" alt="">
                         <div class="wishlist--box" (click)="addWishlist(item)">
-                            <span><i [class]="item.showHeartIcon ? 'fa-solid fa-heart fa-xl wish--color' : 'fa-regular fa-heart fa-xl'"></i></span>
+                            <span><i [ngClass]="{'style--heart': item.showHeartIcon==true}" [class]="item.showHeartIcon ? 'fa-solid fa-heart fa-xl' : 'fa-regular fa-heart fa-xl'"></i></span>
                         </div>
 
                         <div class="discount--box">

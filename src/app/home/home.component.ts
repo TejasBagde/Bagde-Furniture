@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { HeaderComponent } from "../shared/components/header/header.component";
@@ -11,7 +11,7 @@ import { OrderServiceService } from '../order/services/order-service.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, NgIf, CarouselModule, HeaderComponent, RouterModule],
+  imports: [NgFor, NgIf, CarouselModule, HeaderComponent, RouterModule, NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -121,7 +121,8 @@ export class HomeComponent implements OnInit{
  
   showDetailsItem(item: any) {
     if (item !== '') {
-      localStorage.setItem('singleProduct', JSON.stringify(item));
+      // localStorage.setItem('singleProduct', JSON.stringify(item));
+      this.orderservice.singleProductDataSend(item);
       this.router.navigate(['/product-details']);
     }else {
       this.router.navigate(['/home']);

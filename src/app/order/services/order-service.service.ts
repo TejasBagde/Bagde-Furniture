@@ -9,6 +9,7 @@ export class OrderServiceService {
   wishlistOrderData = new BehaviorSubject<[]>([]);
   homeWishlistData = new BehaviorSubject<[]>([]);
   checkoutData = new BehaviorSubject<[]>([]);
+  singleProductData = new BehaviorSubject<{}>({});
 
   constructor() {}
 
@@ -23,5 +24,10 @@ export class OrderServiceService {
   checkoutDataSend(checkout: any){
     this.checkoutData.next(checkout);
   }
+
+  singleProductDataSend(singleDetail: any){
+    this.singleProductData.next(singleDetail);
+  }
+
 
 }

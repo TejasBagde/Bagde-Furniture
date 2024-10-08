@@ -39,9 +39,9 @@
                               </div>
                           </div>
 
-                          <div class="col-5 ps-5" (click)="addToWishlist()">
+                          <div class="col-5 ps-5" (click)="addToWishlist(singleProductDetails)">
                               <div class="d-flex">
-                                  <div class="me-2 heart-color"><i class="fa-xl" [class]="addWishList ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"></i></div>
+                                  <div class="me-2 heart-color"><i class="fa-xl" [ngClass]="{'heart-color' : singleProductDetails.showHeartIcon==true}" [class]="singleProductDetails.showHeartIcon ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"></i></div>
                                   <div class="add--to--wishlist">Add To Wishlist</div>
                               </div>
                           </div>
@@ -53,11 +53,11 @@
 
                       <div class="cart-sec-main">
                           <div class="cart--main">
-                              <div class="decrees--btn" (click)="decreesCart()"><i class="fa-solid fa-minus"></i></div>
-                              <input class="price--input" maxlength="4" type="text" value="0" [(ngModel)]="addValue">
-                              <div class="increase--btn" (click)="increaseCart()"><i class="fa-solid fa-plus"></i></div>
+                              <div class="decrees--btn" (click)="decreesCart(singleProductDetails)"><i class="fa-solid fa-minus"></i></div>
+                              <input class="price--input" maxlength="4" type="text" value="0" [(ngModel)]="singleProductDetails.quantity">
+                              <div class="increase--btn" (click)="increaseCart(singleProductDetails)"><i class="fa-solid fa-plus"></i></div>
                           </div>
-                          <div class="final--amount"><i class="fa-solid fa-dollar-sign me-2"></i>{{validationService.numberWithCommas(addValue * singleProductDetails.price)}}</div>
+                          <div class="final--amount"><i class="fa-solid fa-dollar-sign me-2"></i>{{validationService.numberWithCommas(singleProductDetails.quantity*singleProductDetails.price)}}</div>
                       </div>
 
                       
@@ -69,7 +69,7 @@
                       </div> -->
 
                       <div>
-                          <button class="botton add-cart-btn" [routerLink]="['/cart']" routerLinkActive="router-link-active">Add to Cart</button>
+                          <button class="botton add-cart-btn" (click)="addToCart(singleProductDetails)">Add to Cart</button>
                           <button class="botton by-btn" [routerLink]="['/checkout']">Buy Now</button>
                       </div>
                   </section>

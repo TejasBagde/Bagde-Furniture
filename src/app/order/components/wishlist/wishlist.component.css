@@ -68,3 +68,9 @@ th > .prod--name > p {
 .empty-img--wrapper h1 {
   color: #bea184;
 }
+
+.hideBtn {
+  opacity: 0.5;
+  background-color: #683e22;
+  cursor: not-allowed;
+}

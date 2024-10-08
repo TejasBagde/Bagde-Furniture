@@ -25,6 +25,11 @@ export class AppComponent implements OnInit{
     if(wishlist){
       this.orderService.wishlistOrderData.next(wishlist);
     }
+
+    const singleProduct = JSON.parse(localStorage.getItem("getSingleProduct") || '{}');
+    if(singleProduct){
+      this.orderService.singleProductData.next(singleProduct);
+    }
   }
 
   @HostListener('window:beforeunload', ['$event'])
@@ -34,6 +39,9 @@ export class AppComponent implements OnInit{
 
     const wishlist = this.orderService.wishlistOrderData.getValue();
     localStorage.setItem("getWishlist", JSON.stringify(wishlist));
+
+    const singleProduct = this.orderService.singleProductData.getValue();
+    localStorage.setItem("getSingleProduct", JSON.stringify(singleProduct));
   }
 
 }
