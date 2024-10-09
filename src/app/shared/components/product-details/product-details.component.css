@@ -141,7 +141,13 @@ p {
   color: #fe5757;
 }
 
-
+.star-rating {
+  color: gold;
+  cursor: pointer;
+}
+.star-rating span {
+  margin-right: 5px;
+}
 
 
 /* 

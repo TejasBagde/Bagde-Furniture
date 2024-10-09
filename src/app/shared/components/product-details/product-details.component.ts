@@ -125,6 +125,12 @@ export class ProductDetailsComponent {
     this.router.navigate(['/cart']);
   }
 
+  userRating: number = 0; // User's current rating
+  starCount: number = 5; // Total stars
+  stars: boolean[] = Array(this.starCount).fill(false);
 
+  setRating(index: number) {
+    this.userRating = index + 1; // Set the rating based on the clicked star
+  }
 
 }

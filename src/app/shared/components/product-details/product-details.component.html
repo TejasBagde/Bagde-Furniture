@@ -28,13 +28,28 @@
                       <div class="row">
                           <div class="col-7 border--right">
                               <div class="d-flex">
+                                  <!-- <div class="me-3">
+                                    <div class="star-rating">
+                                      <span *ngFor="let star of stars; let i = index" (click)="setRating(i)">
+                                        <ng-container *ngIf="i < userRating; else emptyStar">
+                                          <i class="fa-solid fa-star fa-xl"></i>
+                                        </ng-container>
+                                        <ng-template #emptyStar>
+                                          <i class="fa-regular fa-star fa-xl"></i>
+                                        </ng-template>
+                                      </span>
+                                    </div>
+                                    <p>Your rating: {{ userRating }}</p>
+                                  </div> -->
+
                                   <div class="me-3">
-                                      <i class="fa-regular fa-star fa-xl"></i>
-                                      <i class="fa-regular fa-star fa-xl"></i>
-                                      <i class="fa-regular fa-star fa-xl"></i>
-                                      <i class="fa-regular fa-star fa-xl"></i>
-                                      <i class="fa-regular fa-star fa-xl"></i>
+                                    <i class="fa-solid fa-star fa-xl"></i>
+                                    <i class="fa-solid fa-star fa-xl"></i>
+                                    <i class="fa-solid fa-star fa-xl"></i>
+                                    <i class="fa-solid fa-star fa-xl"></i>
+                                    <i class="fa-solid fa-star fa-xl"></i>
                                   </div>
+                                  
                                   <div class="rating--value">4.8 (207 Sold)</div>
                               </div>
                           </div>
