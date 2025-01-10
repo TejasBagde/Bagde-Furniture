@@ -149,3 +149,96 @@ input[type="search"]::-webkit-search-cancel-button {
   text-transform: capitalize;
   letter-spacing: 1px;
 }
+
+/* <!-- ------------------- Responsive Navbar -------------------  --> */
+
+@media only screen and (max-width: 576px) {
+  #main {
+    display: none;
+  }
+  .mini--nav {
+    display: none;
+  }
+  ul {
+    margin: 0px;
+    padding: 0px;
+  }
+  h1 {
+    font-family: "Parisienne", cursive;
+    font-size: 1.3rem;
+    font-weight: 900;
+    font-style: normal;
+    color: #a35931;
+    margin: auto 0px;
+  }
+  h5 {
+    font-family: "Parisienne", cursive;
+    font-size: 1.5rem;
+    font-weight: 900;
+    font-style: normal;
+    color: #a35931;
+    margin: auto 0px;
+  }
+  a i {
+    color: #a35931;
+  }
+  .search--bar {
+    width: 100%;
+  }
+  .off-can-clos-btn {
+    color: #fff !important;
+  }
+  .side-nav-respo-content {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #a35931;
+  }
+  .res-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .res-header .res-header-content .content {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 15px;
+    margin: auto 0px;
+  }
+  .res-header .res-header-content .content li {
+    margin: 0px;
+  }
+  .res-header .res-header-content .content li .search-main {
+    width: 100%;
+  }
+  .fa-magnifying-glass {
+    position: static;
+    right: 10px;
+    top: 20px;
+    cursor: pointer;
+    color: #a35931;
+  }
+  .off-nav-bg {
+    background: #a35931;
+  }
+  .off-nav-color {
+    color: #fff;
+  }
+}
+
+@media only screen and (min-width: 577px) {
+  #main {
+    display: block;
+  }
+  .mini--nav {
+    display: block;
+  }
+  .res-header {
+    display: none;
+  }
+}
+

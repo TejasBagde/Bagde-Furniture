@@ -70,3 +70,14 @@
   cursor: pointer;
   position: absolute;
 }
+
+/* ---------------------  */
+
+@media only screen and (max-width: 567px) {
+  #main {
+    background-color: black;
+  }
+  .inner--login-sec {
+    padding: 30px 25px;
+  }
+}

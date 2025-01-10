@@ -1,33 +1,70 @@
-
-
 <div id="main">
-    <!-- dispatch
-    shipping 
-    warehouse
-    out for delivery
-    delivered -->
-
     <div class="container-fluid">
         <div class="wizard">
             <div class="row">
-                <div class="col-7 p-0">
-                    <div class="wizard-box">
+                <div class="col-7 m-auto px-5">
+                    <!-- <div class="wizard-box">
                         <div class="color-line"></div>
                         <i class="fa-solid fa-check fa-xl"></i>
                         <i class="fa-solid fa-user fa-xl"></i>
                         <i class="fa-solid fa-truck-fast fa-xl"></i>
                         <i class="fa-solid fa-people-carry-box fa-xl"></i>
+                    </div> -->
+
+                    <div class="wizard-container">
+                        <!-- Step Indicator -->
+                        <div class="wizard-box">
+                            <!-- <div class="color-line"></div> -->
+                            <i class="fa-solid fa-check fa-xl" [class.completed]="currentStep > 1"></i>
+                            <div class="color-line"></div>
+                            <i class="fa-solid fa-user fa-xl" [class.completed]="currentStep > 2"></i>
+                            <div class="color-line"></div>
+                            <i class="fa-solid fa-truck-fast fa-xl" [class.completed]="currentStep > 3"></i>
+                            <div class="color-line"></div>
+                            <i class="fa-solid fa-people-carry-box fa-xl" [class.completed]="currentStep > 4"></i>
+                        </div>
+
+                        <!-- Wizard Step Content -->
+                        <div class="step-content">
+                            <div *ngIf="currentStep === 1">
+                                <h2>Step 1: Personal Information</h2>
+                                <!-- You can add forms or inputs here -->
+                            </div>
+
+                            <div *ngIf="currentStep === 2">
+                                <h2>Step 2: Shipping Information</h2>
+                                <!-- Shipping details form -->
+                            </div>
+
+                            <div *ngIf="currentStep === 3">
+                                <h2>Step 3: Payment Information</h2>
+                                <!-- Payment details form -->
+                            </div>
+
+                            <div *ngIf="currentStep === 4">
+                                <h2>Step 4: Confirmation</h2>
+                                <!-- Confirmation and final review -->
+                            </div>
+                        </div>
+
+                        <!-- Navigation Buttons -->
+                        <div class="wizard-navigation">
+                            <button (click)="goToPreviousStep()" [disabled]="currentStep === 1">Back</button>
+                            <button (click)="goToNextStep()" [disabled]="currentStep === totalSteps">Next</button>
+                            <button *ngIf="currentStep === totalSteps" (click)="submitWizard()">Submit</button>
+                        </div>
                     </div>
+
                 </div>
-    
+
                 <div class="col-5 p-0">
                     <div class="wizard-box map-box">
-                        <img src="https://i.pinimg.com/564x/96/ae/cf/96aecfdaa698704be1796c16d53d1eb4.jpg" alt="">
+                        <div class="map-content">
+                            <iframe class="map-style" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.200900999715!2d72.91491261343302!3d19.098840503337257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7cb91a08e4b%3A0x10408c61181384c3!2sR%20CITY!5e0!3m2!1sen!2sin!4v1736513587838!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-

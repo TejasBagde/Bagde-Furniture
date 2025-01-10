@@ -14,7 +14,7 @@
                         </ul>
                         <div class="d-flex gap-4 m-auto ms-5 icon--nav">
                             <a [routerLink]="['/login']"><i class="fa-solid fa-user fa-lg"></i><span class="user--name">{{loginUser}}</span></a>
-                            <a [routerLink]="['/wishlist']"><i class="fa-solid fa-heart fa-lg"></i><span class="wish--len">{{wishlistArray.length}}</span></a>
+                            <a [routerLink]="['/wishlist']"><i class="fa-solid fa-heart fa-lg"></i><span class="wish--len" *ngIf="wishlistArray.length">{{wishlistArray.length}}</span></a>
                             <a [routerLink]="['/cart']"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
                         </div>
                     </div>
@@ -172,3 +172,48 @@
     </div>
 </div>
 
+
+<!-- ------------------- Responsive Navbar -------------------  -->
+
+<!-- <div class="row"> -->
+    <!-- <div class="col-12"> -->
+        <div class="res-header">
+            <a data-bs-toggle="offcanvas" href="#res-nav-canvas"><i class="fa-solid fa-bars fa-lg"></i></a>
+            <h1 role="button" [routerLink]="['/home']">Amanda Furnitures</h1>
+            <div class="res-header-content">
+                <ul class="content">
+                    <li>
+                        <a><i class="fa-solid fa-magnifying-glass fa-lg"></i></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/login']"><i class="fa-solid fa-user fa-lg"></i></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/wishlist']"><i class="fa-solid fa-heart fa-lg"></i><span class="wish--len" *ngIf="wishlistArray.length">{{wishlistArray.length}}</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/cart']"><i class="fa-solid fa-cart-shopping fa-lg"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    <!-- </div> -->
+<!-- </div> -->
+
+<!-- ---------------------- Off Canvas ---------------------  -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="res-nav-canvas" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header justify-content-between off-nav-bg">
+      <h5 class="offcanvas-title off-nav-color" id="offcanvasExampleLabel" data-bs-dismiss="offcanvas" [routerLink]="['/home']">Amanda Furnitures</h5>
+      <span data-bs-dismiss="offcanvas"><i class="fa-solid fa-xmark fa-lg off-can-clos-btn"></i></span>
+    </div>
+    <div class="offcanvas-body">
+
+        <ul>
+            <div>
+                <li class="side-nav-respo-content" *ngFor="let items of miniNav">{{items}} <span><i class="fa-solid fa-chevron-right"></i></span></li>
+            </div>
+        </ul>
+
+    </div>
+  </div>
+  
