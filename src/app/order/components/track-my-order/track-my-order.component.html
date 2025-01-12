@@ -1,60 +1,42 @@
 <div id="main">
     <div class="container-fluid">
         <div class="wizard">
-            <div class="row">
+            <div class="row w-100 h-100">
                 <div class="col-7 m-auto px-5">
-                    <!-- <div class="wizard-box">
-                        <div class="color-line"></div>
-                        <i class="fa-solid fa-check fa-xl"></i>
-                        <i class="fa-solid fa-user fa-xl"></i>
-                        <i class="fa-solid fa-truck-fast fa-xl"></i>
-                        <i class="fa-solid fa-people-carry-box fa-xl"></i>
-                    </div> -->
-
-                    <div class="wizard-container">
-                        <!-- Step Indicator -->
+                    <div class="wizard-steps">
                         <div class="wizard-box">
-                            <!-- <div class="color-line"></div> -->
                             <i class="fa-solid fa-check fa-xl" [class.completed]="currentStep > 1"></i>
-                            <div class="color-line"></div>
+                            <div class="line" *ngIf="currentStep === 1 || currentStep >=1"></div>
                             <i class="fa-solid fa-user fa-xl" [class.completed]="currentStep > 2"></i>
-                            <div class="color-line"></div>
+                            <div class="line" *ngIf="currentStep === 1 || currentStep >=1"></div>
                             <i class="fa-solid fa-truck-fast fa-xl" [class.completed]="currentStep > 3"></i>
-                            <div class="color-line"></div>
+                            <div class="line" *ngIf="currentStep === 1 || currentStep >=1"></div>
                             <i class="fa-solid fa-people-carry-box fa-xl" [class.completed]="currentStep > 4"></i>
                         </div>
 
-                        <!-- Wizard Step Content -->
                         <div class="step-content">
                             <div *ngIf="currentStep === 1">
                                 <h2>Step 1: Personal Information</h2>
-                                <!-- You can add forms or inputs here -->
-                            </div>
-
+                           </div>
+    
                             <div *ngIf="currentStep === 2">
                                 <h2>Step 2: Shipping Information</h2>
-                                <!-- Shipping details form -->
                             </div>
-
+    
                             <div *ngIf="currentStep === 3">
                                 <h2>Step 3: Payment Information</h2>
-                                <!-- Payment details form -->
                             </div>
-
+    
                             <div *ngIf="currentStep === 4">
                                 <h2>Step 4: Confirmation</h2>
-                                <!-- Confirmation and final review -->
                             </div>
                         </div>
-
-                        <!-- Navigation Buttons -->
                         <div class="wizard-navigation">
                             <button (click)="goToPreviousStep()" [disabled]="currentStep === 1">Back</button>
                             <button (click)="goToNextStep()" [disabled]="currentStep === totalSteps">Next</button>
                             <button *ngIf="currentStep === totalSteps" (click)="submitWizard()">Submit</button>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="col-5 p-0">
@@ -68,3 +50,4 @@
         </div>
     </div>
 </div>
+

@@ -11,7 +11,7 @@ import { OrderServiceService } from '../order/services/order-service.service';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [NgFor, NgIf, CarouselModule, HeaderComponent, RouterModule, NgClass],
+  imports: [NgFor, CarouselModule, HeaderComponent, RouterModule, NgClass],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

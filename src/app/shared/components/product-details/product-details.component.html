@@ -4,7 +4,7 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-12">
                     <!-- Main Owl Carousel -->
                     <owl-carousel-o [options]="customOptions">
                         <ng-template carouselSlide *ngFor="let image of singleProductCaro">
@@ -20,11 +20,24 @@
                     </div>
                 </div>
        
-                <div class="col-6">
+                <div class="col-xl-6 col-lg-6 col-md-12">
                   <div class="cart--details--wrap">
                     <section class="single--Product-details">
                       <h5>{{singleProductDetails.name}}</h5>
                       <p>{{singleProductDetails.description}}</p>
+
+                      <div>
+                        <div id="star-rating">
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                          <span>★</span>
+                        </div>
+                        <p id="rating-value">Selected Rating: 0</p>
+                        
+                      </div>
+
                       <div class="row">
                           <div class="col-7 border--right">
                               <div class="d-flex">

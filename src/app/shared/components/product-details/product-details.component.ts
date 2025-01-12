@@ -88,6 +88,17 @@ export class ProductDetailsComponent {
 
     this.singleProductDetails = this.orderService.singleProductData.getValue();
     this.singleProductDetails.quantity = 1;
+
+    
+    const stars = document.querySelectorAll<HTMLSpanElement>('#star-rating span');
+    const ratingValue = document.querySelector<HTMLParagraphElement>('#rating-value');
+
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        if (ratingValue) ratingValue.innerText = `Selected Rating: ${index + 1}`;
+        stars.forEach((s, i) => s.classList.toggle('selected', i <= index));
+      });
+    });
   }
 
   showModal(){

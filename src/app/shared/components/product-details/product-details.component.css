@@ -184,3 +184,14 @@ p {
   border-top: 2px solid #A35931;
   border-bottom: 2px solid #A35931;
 } */
+
+
+#star-rating {
+  font-size: 2rem;
+  color: gray;
+  cursor: pointer;
+}
+
+#star-rating .selected {
+  color: gold;
+}

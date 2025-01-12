@@ -6,10 +6,9 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [NgIf],
   templateUrl: './track-my-order.component.html',
-  styleUrl: './track-my-order.component.css'
+  styleUrl: './track-my-order.component.css',
 })
 export class TrackMyOrderComponent {
-
   currentStep: number = 1;
   totalSteps: number = 5; // Total number of steps in the wizard
 
@@ -17,7 +16,7 @@ export class TrackMyOrderComponent {
   formData: any = {
     step1Data: '',
     step2Data: '',
-    step3Data: ''
+    step3Data: '',
   };
 
   goToNextStep() {
@@ -40,5 +39,4 @@ export class TrackMyOrderComponent {
     console.log('Form Data:', this.formData);
     alert('Wizard Completed!');
   }
-
 }
