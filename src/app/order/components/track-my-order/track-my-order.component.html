@@ -1,16 +1,20 @@
+<nav>
+    <a [href]="'/home'"><h1 [routerLink]="['/home']">Amanda Furnitures</h1></a>
+</nav>
+
 <div id="main">
     <div class="container-fluid">
         <div class="wizard">
             <div class="row w-100 h-100">
-                <div class="col-7 m-auto px-5">
+                <div class="col-xl-7 col-lg-7 col-md-12 m-auto px-5">
                     <div class="wizard-steps">
                         <div class="wizard-box">
                             <i class="fa-solid fa-check fa-xl" [class.completed]="currentStep > 1"></i>
-                            <div class="line" *ngIf="currentStep === 1 || currentStep >=1"></div>
+                            <div class="line" [class]="currentStep > 1 ? 'line-2' : 'line'"></div>
                             <i class="fa-solid fa-user fa-xl" [class.completed]="currentStep > 2"></i>
-                            <div class="line" *ngIf="currentStep === 1 || currentStep >=1"></div>
+                            <div class="line" [class]="currentStep > 2 ? 'line-2' : 'line'"></div>
                             <i class="fa-solid fa-truck-fast fa-xl" [class.completed]="currentStep > 3"></i>
-                            <div class="line" *ngIf="currentStep === 1 || currentStep >=1"></div>
+                            <div class="line" [class]="currentStep > 3 ? 'line-2' : 'line'"></div>
                             <i class="fa-solid fa-people-carry-box fa-xl" [class.completed]="currentStep > 4"></i>
                         </div>
 
@@ -39,7 +43,7 @@
                     </div>
                 </div>
 
-                <div class="col-5 p-0">
+                <div class="col-xl-5 col-lg-5 col-md-12 p-0">
                     <div class="wizard-box map-box">
                         <div class="map-content">
                             <iframe class="map-style" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.200900999715!2d72.91491261343302!3d19.098840503337257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7cb91a08e4b%3A0x10408c61181384c3!2sR%20CITY!5e0!3m2!1sen!2sin!4v1736513587838!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -51,3 +55,54 @@
     </div>
 </div>
 
+        <!-- --------------------- Responsive Wizard --------------------  -->
+
+        <div class="container-fluid">
+            <div class="mini-wizard">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="wizard-box map-box">
+                            <div class="map-content">
+                                <iframe class="map-style" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.200900999715!2d72.91491261343302!3d19.098840503337257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7cb91a08e4b%3A0x10408c61181384c3!2sR%20CITY!5e0!3m2!1sen!2sin!4v1736513587838!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-12" style="margin-bottom: 500px;">
+                        <h1 class="track-mini-head-text">Tracking Order</h1>    
+
+                        <div class="wizard-content">
+                            <div class="mini-wizard-box">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <i class="fa-solid fa-check mini-icon-style"></i>
+                                    <p>tejas bagde</p>
+                                </div>
+                                <div class="line"></div>
+
+                                <div>  
+                                    <i class="fa-solid fa-user mini-icon-style"></i>
+                                </div>
+                                <div class="line"></div>
+
+                                <div>   
+                                    <i class="fa-solid fa-truck-fast mini-icon-style"></i>
+                                </div>
+                                <div class="line"></div>
+
+                                <div>
+                                    <i class="fa-solid fa-people-carry-box mini-icon-style"></i>
+                                </div>
+
+                                <!-- <i class="fa-solid fa-check mini-icon-style"></i>
+                                <div class="line"></div>
+                                <i class="fa-solid fa-user mini-icon-style"></i>
+                                <div class="line"></div>
+                                <i class="fa-solid fa-truck-fast mini-icon-style"></i>
+                                <div class="line"></div>
+                                <i class="fa-solid fa-people-carry-box mini-icon-style"></i> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
